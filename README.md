@@ -18,10 +18,12 @@ The public product name is **Tuned Image Sorter**. The internal package name rem
 
 Portable Windows ZIP files should be published through GitHub Releases, not committed to the source repository.
 
+The GitHub release currently hosts the CPU and GPU_LITE ZIP files. GPU_FULL remains an official profile, but the v69.6 archive is larger than 2 GB and is intentionally not hosted in this GitHub release.
+
 | Asset | Recommended for |
 | --- | --- |
 | `TunedImageSorter_CPU_portable_v69_6.zip` | Most Windows PCs. Safest first download. |
-| `TunedImageSorter_GPU_FULL_portable_v69_6.zip` | NVIDIA GPU PCs. Larger package with bundled CUDA runtime files. |
+| `TunedImageSorter_GPU_FULL_portable_v69_6.zip` | NVIDIA GPU PCs. Larger package with bundled CUDA runtime files. Official profile, not hosted on GitHub for v69.6 because the archive is larger than 2 GB. |
 | `TunedImageSorter_GPU_LITE_portable_v69_6.zip` | Experimental smaller GPU profile with runtime setup/fallback behavior. |
 
 Use `WHICH_VERSION_TO_DOWNLOAD_RU.txt` or `WHICH_VERSION_TO_DOWNLOAD_EN.txt` for user-facing download guidance. SHA256 checksums should be published next to release assets.
