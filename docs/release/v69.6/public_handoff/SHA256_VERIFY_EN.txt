@@ -1,0 +1,14 @@
+SHA256 verification
+===================
+
+PowerShell commands:
+
+Get-FileHash .\TunedImageSorter_CPU_portable_v69_6.zip -Algorithm SHA256
+Get-FileHash .\TunedImageSorter_GPU_FULL_portable_v69_6.zip -Algorithm SHA256
+Get-FileHash .\TunedImageSorter_GPU_LITE_portable_v69_6.zip -Algorithm SHA256
+
+What must match:
+- the Hash value shown by PowerShell;
+- the matching line in SHA256SUMS.txt.
+
+After publishing, download one or all ZIP files from the public page and verify again.

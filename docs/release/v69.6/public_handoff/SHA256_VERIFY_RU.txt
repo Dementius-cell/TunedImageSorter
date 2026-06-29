@@ -1,0 +1,14 @@
+Проверка SHA256
+===============
+
+PowerShell-команды:
+
+Get-FileHash .\TunedImageSorter_CPU_portable_v69_6.zip -Algorithm SHA256
+Get-FileHash .\TunedImageSorter_GPU_FULL_portable_v69_6.zip -Algorithm SHA256
+Get-FileHash .\TunedImageSorter_GPU_LITE_portable_v69_6.zip -Algorithm SHA256
+
+Что должно совпасть:
+- значение Hash из PowerShell;
+- соответствующая строка в SHA256SUMS.txt.
+
+После публикации желательно скачать один или все ZIP-файлы уже с публичной страницы и повторить проверку.

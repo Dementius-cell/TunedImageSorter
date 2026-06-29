@@ -1,0 +1,36 @@
+{
+  "product_name": "Tuned Image Sorter",
+  "version": "v69.6",
+  "refactor_stage": "Этап 055",
+  "materials_type": "public release handoff materials",
+  "runtime_changes": false,
+  "source_changes": false,
+  "based_on": "v69.6 / Этап 055 Windows packaging/release-bundle confirmed",
+  "expected_release_bundle_folder": "dist/windows/TunedImageSorter_v69_6_release",
+  "expected_assets": [
+    "TunedImageSorter_CPU_portable_v69_6.zip",
+    "TunedImageSorter_GPU_FULL_portable_v69_6.zip",
+    "TunedImageSorter_GPU_LITE_portable_v69_6.zip",
+    "SHA256SUMS.txt",
+    "RELEASE_BUNDLE_MANIFEST.json",
+    "WHICH_VERSION_TO_DOWNLOAD_RU.txt",
+    "WHICH_VERSION_TO_DOWNLOAD_EN.txt",
+    "PUBLIC_RELEASE_NOTES_RU.txt",
+    "PUBLIC_RELEASE_NOTES_EN.txt"
+  ],
+  "known_non_blocking_issue": "reports folder may not auto-open after ordinary Start",
+  "do_not_change_without_separate_decision": [
+    "ML / face recognition",
+    "clustering logic",
+    "ordinary Start pipeline",
+    "apply-names",
+    "SQLite schema",
+    "project.json schema",
+    "CSV schemas",
+    "result-health",
+    "support-bundle",
+    "CPU/GPU_FULL/GPU_LITE split",
+    "GPU Lite runtime setup logic",
+    "internal Python package face_sorter_mvp"
+  ]
+}

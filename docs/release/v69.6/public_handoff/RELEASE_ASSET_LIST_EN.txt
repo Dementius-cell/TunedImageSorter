@@ -1,0 +1,21 @@
+Files to publish
+================
+
+Required:
+- TunedImageSorter_CPU_portable_v69_6.zip
+- TunedImageSorter_GPU_FULL_portable_v69_6.zip
+- TunedImageSorter_GPU_LITE_portable_v69_6.zip
+- SHA256SUMS.txt
+
+Recommended:
+- RELEASE_BUNDLE_MANIFEST.json
+- WHICH_VERSION_TO_DOWNLOAD_RU.txt
+- WHICH_VERSION_TO_DOWNLOAD_EN.txt
+- PUBLIC_RELEASE_NOTES_RU.txt
+- PUBLIC_RELEASE_NOTES_EN.txt
+
+Do not publish as primary user-facing files:
+- development source ZIP;
+- build folders;
+- temporary diagnostics;
+- local test result folders.

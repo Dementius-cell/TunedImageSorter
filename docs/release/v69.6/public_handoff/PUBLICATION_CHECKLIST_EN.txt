@@ -1,0 +1,24 @@
+Public release checklist
+========================
+
+Before publishing:
+[ ] Open dist\windows\TunedImageSorter_v69_6_release.
+[ ] CPU ZIP is present.
+[ ] GPU_FULL ZIP is present.
+[ ] GPU_LITE ZIP is present.
+[ ] SHA256SUMS.txt is present.
+[ ] RELEASE_BUNDLE_MANIFEST.json is present.
+[ ] SHA256 values are verified locally.
+[ ] GitHub Release text is copied from GITHUB_RELEASE_DRAFT_RU.md or GITHUB_RELEASE_DRAFT_EN.md.
+[ ] Known limitations are stated clearly.
+[ ] Privacy/local processing note is stated clearly.
+[ ] CPU is described as the most compatible option.
+[ ] GPU_FULL is described as large because it bundles CUDA runtime files.
+[ ] GPU_LITE is described as experimental/supplementary.
+
+After publishing:
+[ ] Open the public release page.
+[ ] Download at least the CPU ZIP from the public page.
+[ ] Verify SHA256 of the downloaded ZIP.
+[ ] Confirm that SHA256SUMS.txt is accessible.
+[ ] Confirm that the release text does not use Face Sorter MVP as the public product name.

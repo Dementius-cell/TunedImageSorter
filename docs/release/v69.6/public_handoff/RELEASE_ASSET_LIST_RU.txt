@@ -1,0 +1,21 @@
+Файлы для публикации
+====================
+
+Обязательные:
+- TunedImageSorter_CPU_portable_v69_6.zip
+- TunedImageSorter_GPU_FULL_portable_v69_6.zip
+- TunedImageSorter_GPU_LITE_portable_v69_6.zip
+- SHA256SUMS.txt
+
+Желательные:
+- RELEASE_BUNDLE_MANIFEST.json
+- WHICH_VERSION_TO_DOWNLOAD_RU.txt
+- WHICH_VERSION_TO_DOWNLOAD_EN.txt
+- PUBLIC_RELEASE_NOTES_RU.txt
+- PUBLIC_RELEASE_NOTES_EN.txt
+
+Не публиковать как основной пользовательский файл:
+- исходный source ZIP для разработки;
+- build папки;
+- временные diagnostics;
+- локальные test result folders.

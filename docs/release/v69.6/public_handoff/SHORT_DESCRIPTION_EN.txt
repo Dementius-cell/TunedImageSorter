@@ -1,0 +1,1 @@
+Tuned Image Sorter is a Windows app for locally sorting large photo folders by detected faces. Portable CPU, GPU_FULL and GPU_LITE builds are available.

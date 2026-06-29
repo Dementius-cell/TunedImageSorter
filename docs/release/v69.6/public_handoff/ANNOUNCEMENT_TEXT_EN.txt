@@ -1,0 +1,7 @@
+Short announcement
+==================
+
+Tuned Image Sorter v69.6 is available as the first public portable release for Windows.
+The app sorts large photo folders by detected faces and runs locally on the user's computer.
+Three builds are available: CPU, GPU_FULL for NVIDIA GPUs and the experimental GPU_LITE profile.
+Start with CPU if you are not sure which version to download.
