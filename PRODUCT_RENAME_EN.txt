@@ -1,0 +1,32 @@
+Tuned Image Sorter v69.6 / Stage 055 — product rename
+
+What changed:
+  - The public product name changed from Face Sorter MVP to Tuned Image Sorter.
+  - User-facing EXE files are now TunedImageSorter.exe and TunedImageSorter_CLI.exe.
+  - Portable folders and ZIP files now use the TunedImageSorter prefix.
+
+Official portable ZIP files for v69.6:
+  - TunedImageSorter_CPU_portable_v69_6.zip
+  - TunedImageSorter_GPU_FULL_portable_v69_6.zip
+  - TunedImageSorter_GPU_LITE_portable_v69_6.zip
+
+What did not change:
+  - ML/recognition unchanged.
+  - clustering unchanged.
+  - pipeline stages unchanged.
+  - SQLite schema unchanged.
+  - project.json unchanged.
+  - CSV report schemas unchanged.
+  - ordinary Start must run mode=all, not apply-names.
+
+The internal Python package name remains face_sorter_mvp for now to reduce regression risk. This is a source-tree implementation detail and is not exposed to portable users.
+
+GPU Lite:
+  New primary local cache path: %LOCALAPPDATA%\TunedImageSorter\gpu_lite_runtime\cuda12_ort126_v69_3_1
+  The old FaceSorterMVP cache path may only be used as a compatibility fallback for already downloaded runtime DLLs.
+
+Verification before freezing:
+  - release-check OK
+  - package_identity_check: OK
+  - friend-ready package verification OK
+  - zip_integrity: OK

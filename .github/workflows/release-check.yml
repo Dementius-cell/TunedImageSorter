@@ -1,0 +1,24 @@
+name: Repository checks
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+
+jobs:
+  source-check:
+    runs-on: windows-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Compile source
+        run: py -m compileall face_sorter_mvp tools
+
+      - name: Run release check without recursive self-test
+        run: py tools\release_check.py --no-self-test

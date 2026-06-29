@@ -1,0 +1,51 @@
+Tuned Image Sorter v69.6 — final release gate
+
+Этот файл отвечает на один вопрос: можно ли отдавать эту portable-сборку обычному пользователю?
+
+PASS означает:
+  1. CPU, GPU_FULL и GPU_LITE сборки собраны из одной source-базы v69.6 / Этап 055.
+  2. release-check показывает OK.
+  3. friend-ready package verification показывает OK.
+  4. portable_manifest.json показывает правильный profile: cpu, gpu или gpu-lite.
+  5. package_identity_check показывает OK.
+  6. ZIP integrity показывает OK.
+  7. CPU package не содержит CUDAExecutionProvider и GPU provider DLL.
+  8. GPU package содержит CUDAExecutionProvider и bundled CUDA/cuDNN/cuBLAS runtime.
+  9. QUICK_START, TROUBLESHOOTING, RC_CHECKLIST и RELEASE_GATE лежат рядом с TunedImageSorter.exe.
+ 10. Обычный Start остаётся ordinary pipeline mode=all, not apply-names.
+
+FAIL означает:
+  - Не передавать ZIP как стабильный.
+  - Сохранить Windows PowerShell build log.
+  - Создать support-bundle, если проблема проявилась в GUI/result folder.
+  - Проверить TROUBLESHOOTING_RU.txt и ERRORS_RU.txt.
+
+Минимальные команды gate:
+  tools\windows_packaging\build_windows_gui.ps1 -Profile cpu -InstallRequirements
+  tools\windows_packaging\build_windows_gui.ps1 -Profile gpu -InstallRequirements
+  tools\windows_packaging\build_windows_gui.ps1 -Profile gpu-lite -InstallRequirements
+
+Ожидаемые ZIP:
+  dist\windows\TunedImageSorter_CPU_portable_v69_6.zip
+  dist\windows\TunedImageSorter_GPU_FULL_portable_v69_6.zip
+  dist\windows\TunedImageSorter_GPU_LITE_portable_v69_6.zip
+
+Финальный статус можно фиксировать только после успешной Windows CPU/GPU проверки:
+  v69.6 / Этап 055 — confirmed stable release candidate gate base
+
+Границы:
+  ML/recognition unchanged
+  clustering unchanged
+  pipeline stages unchanged
+  SQLite schema unchanged
+  project.json unchanged
+  CSV report schemas unchanged
+  ordinary Start must run mode=all, not apply-names
+
+Дополнительный freeze-файл: RELEASE_FREEZE_RU.txt
+
+Дополнительная матрица профилей: DUAL_GPU_PACKAGING_RU.txt
+
+
+Переименование продукта:
+  Подробности: PRODUCT_RENAME_RU.txt

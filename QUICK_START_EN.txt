@@ -1,0 +1,50 @@
+Tuned Image Sorter v69.6 — one-page quick start
+============================================
+
+A normal user should run only:
+  TunedImageSorter.exe
+
+Minimal order:
+  1. Extract the ZIP into a normal folder; do not run from inside the archive.
+  2. Run TunedImageSorter.exe.
+  3. Choose input — the source photo folder.
+  4. Choose output — a separate result folder outside input.
+  5. Run Environment check.
+  6. Run Quick test on 20–50 photos.
+  7. If the quick test looks correct, use Start for the whole folder.
+  8. After completion, check people/review/final, reports and diagnostics.
+
+CPU or GPU:
+  CPU portable is the most compatible option.
+  GPU portable is faster on large folders; it needs an NVIDIA GPU and a current NVIDIA driver.
+  CUDA Toolkit, cuDNN installer, Python and pip are not required on the user's computer.
+
+Do not:
+  - Do not place output inside input.
+  - Do not remove _internal.
+  - Do not remove _internal\nvidia in the GPU package.
+  - Do not use apply-names instead of ordinary Start for the first sorting run.
+
+If Windows SmartScreen warns:
+  More info -> Run anyway.
+  This is expected for an unsigned portable exe.
+
+If something goes wrong:
+  1. Open ERRORS_EN.txt.
+  2. Open TROUBLESHOOTING_EN.txt.
+  3. In the GUI, open Status / errors and Diagnostics / Support.
+  4. To check a result folder, use:
+     TunedImageSorter_CLI.exe --result-health --output <result_dir>
+  5. To send diagnostics, use:
+     TunedImageSorter_CLI.exe --support-bundle --output <result_dir>
+
+Short file map:
+  START_HERE_EN.txt       — where to begin.
+  QUICK_START_EN.txt      — this one-page guide.
+  FIRST_RUN_EN.txt        — detailed first run.
+  ERRORS_EN.txt           — human-readable errors.
+  TROUBLESHOOTING_EN.txt  — what to do for common problems.
+  README_EN.txt           — full package README.
+
+v69.6 / Stage 055 adds friend-ready quick start and troubleshooting docs without changing ML/pipeline/schema/CSV/project.json/CPU-GPU split.
+Before sharing the build with another person, open RC_CHECKLIST_EN.txt and RELEASE_GATE_EN.txt.

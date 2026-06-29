@@ -1,0 +1,40 @@
+Tuned Image Sorter v69.6 / Stage 055 — experimental_slim_gpu_package
+
+Purpose:
+- TunedImageSorter_GPU_LITE_portable_v69_6.zip is an experimental GPU Lite package.
+- It does NOT replace the stable CPU portable package or the stable full GPU portable package.
+- It does not bundle the _internal\nvidia folder, so the ZIP is smaller.
+
+First-run behavior:
+1. TunedImageSorter.exe checks for NVIDIA driver / nvidia-smi.
+2. It then checks for the CUDA 12 runtime DLLs required by onnxruntime-gpu==1.26.0.
+3. If DLLs are missing, the program asks for user consent.
+4. After consent, it downloads pinned NVIDIA CUDA 12 runtime wheels from PyPI.
+5. It extracts DLLs only into the local user folder:
+   %LOCALAPPDATA%\TunedImageSorter\gpu_lite_runtime\cuda12_ort126_v69_3_1
+6. System drivers, Python and global packages are not modified.
+
+Diagnostics:
+- TunedImageSorter_CLI.exe --gpu-lite-runtime-status
+- TunedImageSorter_CLI.exe --gpu-lite-runtime-setup --yes
+- TunedImageSorter_CLI.exe --runtime-preflight --gpu
+- TunedImageSorter_CLI.exe --release-check
+
+Limitations:
+- Internet access is required for first-run runtime setup.
+- A current NVIDIA driver is required.
+- If the user declines runtime setup, GPU Lite can still open GUI/diagnostics but CUDAExecutionProvider will not be available.
+- For the most reliable handoff to another person, use the full GPU portable package.
+
+Unchanged:
+- ML is unchanged.
+- recognition is unchanged.
+- clustering is unchanged.
+- ordinary Start must run mode=all, not apply-names.
+- apply-names, SQLite schema, project.json, CSV schemas, result-health and support-bundle are unchanged.
+
+Release checks:
+- release-check
+- package_identity_check
+- friend-ready package verification
+- zip_integrity

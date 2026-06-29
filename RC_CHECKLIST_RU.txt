@@ -1,0 +1,94 @@
+Tuned Image Sorter v69.6 — RC checklist перед передачей сборки
+
+Цель файла: быстро проверить, что portable package можно отдавать другому человеку.
+Это не новый режим приложения и не новый pipeline. Это финальная release-candidate памятка.
+
+1. Проверить версию
+   Откройте VERSION.txt.
+   Должно быть:
+     version=v69.6
+     refactor_stage=Этап 055
+     ui_api_version=21
+
+2. Проверить состав portable package
+   Рядом с TunedImageSorter.exe должны быть:
+     START_HERE_RU.txt / START_HERE_EN.txt
+     QUICK_START_RU.txt / QUICK_START_EN.txt
+     FIRST_RUN_RU.txt / FIRST_RUN_EN.txt
+     ERRORS_RU.txt / ERRORS_EN.txt
+     TROUBLESHOOTING_RU.txt / TROUBLESHOOTING_EN.txt
+     RC_CHECKLIST_RU.txt / RC_CHECKLIST_EN.txt
+     RELEASE_GATE_RU.txt / RELEASE_GATE_EN.txt
+     README_RU.txt / README_EN.txt
+     VERSION.txt
+     SUPPORT_BUNDLE_RU.txt / SUPPORT_BUNDLE_EN.txt
+     portable_manifest.json
+     package_identity_check.json / package_identity_check.txt
+
+3. Проверить CPU build
+   Должно быть:
+     TunedImageSorter_CPU
+     TunedImageSorter_CPU_portable_v69_6.zip
+     onnxruntime==1.27.0
+     CUDAExecutionProvider отсутствует
+     onnxruntime-gpu не установлен
+     package_identity_check: OK
+     friend_ready_package: OK
+     zip_integrity: OK
+
+4. Проверить GPU build
+   Должно быть:
+     TunedImageSorter_GPU_FULL
+     TunedImageSorter_GPU_FULL_portable_v69_6.zip
+     onnxruntime-gpu==1.26.0
+     CUDAExecutionProvider виден
+     CUDA session smoke-test: OK
+     CUDA/cuDNN/cuBLAS runtime DLL присутствуют
+     package_identity_check: OK
+     friend_ready_package: OK
+     zip_integrity: OK
+
+5. Проверить release-check
+   Команды:
+     TunedImageSorter_CLI.exe --release-check
+     TunedImageSorter_CLI.exe --runtime-preflight
+     TunedImageSorter_CLI.exe --runtime-preflight --gpu   # только GPU package
+
+   Release-check должен показать OK.
+   В v69.6 должен проходить guard:
+     release_candidate_final_gate
+
+6. Проверить обычный запуск
+   TunedImageSorter.exe должен открывать GUI без постоянного чёрного окна.
+   Обычный Старт должен запускать обычный pipeline mode=all.
+   Обычный Старт не должен запускать apply-names.
+
+7. Проверить результат после тестового набора
+   Для небольшого набора фото:
+     reports должны создаться
+     diagnostics должны открываться
+     result-health должен работать
+     support-bundle должен создаваться
+
+8. Проверить допустимые предупреждения
+   Допустимы, если release-check и CUDAExecutionProvider OK:
+     scipy.special._cdflib not found
+     nvinfer_10.dll / nvonnxparser_10.dll для TensorRT
+
+9. Решение
+   Если все пункты выше OK, сборку можно считать RC-пакетом, который можно передавать обычному пользователю.
+   Если какой-то пункт не OK, не передавайте ZIP как stable; приложите support-bundle и лог сборки.
+
+Границы v69.6:
+  ML/recognition unchanged
+  clustering unchanged
+  pipeline stages unchanged
+  SQLite schema unchanged
+  project.json unchanged
+  CSV report schemas unchanged
+  ordinary Start must run mode=all, not apply-names
+  CPU/GPU packaging split unchanged
+
+Финальная freeze-памятка: RELEASE_FREEZE_RU.txt
+
+Дополнительная матрица профилей: DUAL_GPU_PACKAGING_RU.txt

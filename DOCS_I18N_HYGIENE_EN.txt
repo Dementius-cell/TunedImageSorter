@@ -1,0 +1,64 @@
+Tuned Image Sorter v69.6 / Stage 055 — first public polish / release identity pass
+
+Purpose
+-------
+v69.6 is a first public polish / release identity pass on top of the confirmed rebrand base v69.3.1 / Stage 052.
+
+This stage does not change application behavior. It is intended to clean up developer notes, bilingual RU/EN documentation and release-facing text before handing the project to another user or developer.
+
+What is checked
+---------------
+PASS for this stage means:
+
+1. Friend-ready user documents are present in RU/EN.
+2. Developer-facing documents are present in RU/EN.
+3. Stale references to earlier stages have been removed from developer notes and architecture notes.
+4. RU documents do not contain large English prose blocks where Russian text is expected.
+5. EN documents consistently use Stage 055 except for technical identifiers and compatibility strings.
+6. VERSION.txt, README, RELEASE_FREEZE, RELEASE_GATE and RC_CHECKLIST are aligned with v69.6.
+7. release-check includes the docs_i18n_hygiene_polish guard.
+
+What is unchanged
+-----------------
+ML, face recognition, clustering, ordinary Start, apply-names, pipeline stages, SQLite schema, project.json, CSV schemas, Review clusters backend, result-health backend, support-bundle backend, CPU/GPU packaging split, pinned GPU runtime and bundled CUDA runtime are unchanged.
+
+Technical terms intentionally not translated
+--------------------------------------------
+The following strings remain technical names and part of the stable contract:
+
+- TunedImageSorter.exe
+- TunedImageSorter_CLI.exe
+- CUDAExecutionProvider
+- CPUExecutionProvider
+- onnxruntime
+- onnxruntime-gpu
+- package_identity_check
+- friend_ready_package
+- zip_integrity
+- support-bundle
+- result-health
+- project.json
+- problem_files.csv
+- review_decisions.csv
+
+Verification commands
+---------------------
+Source check:
+
+python tools/windows_packaging/verify_friend_ready_package.py --source-root .
+python tools/windows_packaging/smoke_test_packaging.py
+python tools/release_check.py
+
+Windows CPU/GPU build check:
+
+tools\windows_packaging\build_windows_gui.ps1 -Profile cpu -InstallRequirements
+tools\windows_packaging\build_windows_gui.ps1 -Profile gpu -InstallRequirements
+
+Expected ZIP files:
+
+dist\windows\TunedImageSorter_CPU_portable_v69_6.zip
+dist\windows\TunedImageSorter_GPU_FULL_portable_v69_6.zip
+
+PASS criterion
+--------------
+release-check OK, package_identity_check OK, friend-ready package verification OK, zip_integrity OK and CPU/GPU runtime split OK.

@@ -1,0 +1,53 @@
+Tuned Image Sorter v69.6 — stable release packaging freeze
+
+Назначение файла: зафиксировать финальный стабильный состав portable-релиза.
+Это не новый пользовательский режим и не новый pipeline. Это freeze-слой над подтверждённой v68.7.1 / Этап 048 CPU/GPU базой.
+
+Статус после успешной Windows CPU/GPU проверки:
+  v69.6 / Этап 055 — confirmed stable release packaging freeze base
+
+Основные артефакты:
+  TunedImageSorter_CPU_portable_v69_6.zip
+  TunedImageSorter_GPU_FULL_portable_v69_6.zip
+
+Freeze guarantees:
+  release_freeze_final_package
+  release-check: OK
+  package_identity_check: OK
+  friend_ready_package: OK
+  zip_integrity: OK
+  portable_manifest.json: OK
+  ordinary Start must run mode=all, not apply-names
+
+CPU package freeze:
+  onnxruntime==1.27.0
+  onnxruntime-gpu не установлен
+  CUDAExecutionProvider отсутствует
+  GPU provider DLLs не bundled
+
+GPU package freeze:
+  onnxruntime-gpu==1.26.0
+  CUDAExecutionProvider виден
+  CUDA session smoke-test: OK
+  _internal\nvidia включена в full GPU portable ZIP
+  CUDA/cuDNN/cuBLAS/NVRTC/cuFFT/cuRAND/nvJitLink runtime bundled
+  Первый запуск не должен скачивать NVIDIA runtime из интернета
+
+Границы freeze:
+  ML/recognition unchanged
+  clustering unchanged
+  pipeline stages unchanged
+  SQLite schema unchanged
+  project.json unchanged
+  CSV report schemas unchanged
+  Review clusters/apply-names backend unchanged
+  result-health/support-bundle backend unchanged
+  CPU/GPU packaging split unchanged
+  full GPU portable remains self-contained
+
+Rollback base:
+  v68.7.1 / Этап 048 — confirmed stable release candidate gate base
+
+Правило передачи пользователю:
+  Передавать можно только ZIP, который прошёл RELEASE_GATE_RU.txt и этот RELEASE_FREEZE_RU.txt.
+  Если package_identity_check или zip_integrity не OK — ZIP не передавать как stable.

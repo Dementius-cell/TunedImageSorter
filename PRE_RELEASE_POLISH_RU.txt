@@ -1,0 +1,65 @@
+Tuned Image Sorter v69.6 / Этап 055 — pre-release polish checklist
+
+Назначение этапа
+---------------
+v69.6 — безопасный user-facing polish поверх подтверждённой базы v69.3.1 / Этап 052.
+
+Что проверяет этот этап
+-----------------------
+1. Product name в пользовательских местах: Tuned Image Sorter.
+2. Launcher names: TunedImageSorter.exe и TunedImageSorter_CLI.exe.
+3. Portable folders:
+   - TunedImageSorter_CPU
+   - TunedImageSorter_GPU_FULL
+   - TunedImageSorter_GPU_LITE
+4. Portable ZIP names:
+   - TunedImageSorter_CPU_portable_v69_6.zip
+   - TunedImageSorter_GPU_FULL_portable_v69_6.zip
+   - TunedImageSorter_GPU_LITE_portable_v69_6.zip
+5. VERSION.txt, portable_manifest.json, package_identity_check.json и package_identity_check.txt согласованы с v69.6 / Этап 055.
+6. Friend-ready docs лежат рядом с TunedImageSorter.exe.
+7. README / QUICK_START / TROUBLESHOOTING / RELEASE_GATE / RELEASE_FREEZE / RC_CHECKLIST согласованы между RU и EN версиями.
+
+Что не менялось
+----------------
+- ML / распознавание лиц.
+- Clustering logic.
+- Ordinary Start pipeline.
+- apply-names.
+- SQLite schema.
+- project.json schema.
+- CSV schemas.
+- result-health.
+- support-bundle.
+- CPU / GPU_FULL / GPU_LITE split.
+- GPU Lite runtime setup logic.
+- Внутренний Python package: face_sorter_mvp.
+
+GPU Lite note
+-------------
+GPU Lite runtime cache остаётся:
+%LOCALAPPDATA%\TunedImageSorter\gpu_lite_runtime\cuda12_ort126_v69_3_1
+
+Это ожидаемо: runtime stack не менялся, поэтому существующий локальный cache можно использовать повторно.
+
+Release gate
+------------
+Перед передачей сборки нужно проверить три профиля:
+
+CPU:
+  TunedImageSorter_CLI.exe --release-check
+  TunedImageSorter_CLI.exe --runtime-preflight
+
+GPU_FULL:
+  TunedImageSorter_CLI.exe --release-check
+  TunedImageSorter_CLI.exe --runtime-preflight --gpu
+
+GPU_LITE:
+  TunedImageSorter_CLI.exe --release-check
+  TunedImageSorter_CLI.exe --gpu-lite-runtime-status
+  TunedImageSorter_CLI.exe --runtime-preflight --gpu
+
+Обычная кнопка Старт должна запускать mode=all, не apply-names.
+
+Technical guard token:
+ordinary Start must run mode=all, not apply-names

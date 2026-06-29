@@ -1,0 +1,24 @@
+Tuned Image Sorter
+version=v69.6
+refactor_stage=Этап 055
+ui_api_version=21
+profile=cpu/gpu-full/gpu-lite portable split
+packaging=Windows one-folder PyInstaller + friend-ready portable ZIP
+launchers=TunedImageSorter.exe; TunedImageSorter_CLI.exe
+friend_ready_docs=START_HERE_RU.txt; START_HERE_EN.txt; QUICK_START_RU.txt; QUICK_START_EN.txt; FIRST_RUN_RU.txt; FIRST_RUN_EN.txt; ERRORS_RU.txt; ERRORS_EN.txt; TROUBLESHOOTING_RU.txt; TROUBLESHOOTING_EN.txt; RC_CHECKLIST_RU.txt; RC_CHECKLIST_EN.txt; RELEASE_GATE_RU.txt; RELEASE_GATE_EN.txt; RELEASE_FREEZE_RU.txt; RELEASE_FREEZE_EN.txt; DOCS_I18N_HYGIENE_RU.txt; DOCS_I18N_HYGIENE_EN.txt; DUAL_GPU_PACKAGING_RU.txt; DUAL_GPU_PACKAGING_EN.txt; PRODUCT_RENAME_RU.txt; PRODUCT_RENAME_EN.txt; PRE_RELEASE_POLISH_RU.txt; PRE_RELEASE_POLISH_EN.txt; PROFILE_GUIDE_RU.txt; PROFILE_GUIDE_EN.txt; PRIVACY_LOCAL_PROCESSING_RU.txt; PRIVACY_LOCAL_PROCESSING_EN.txt; KNOWN_LIMITATIONS_RU.txt; KNOWN_LIMITATIONS_EN.txt; PUBLIC_RELEASE_NOTES_RU.txt; PUBLIC_RELEASE_NOTES_EN.txt; RELEASE_BUNDLE_RU.txt; RELEASE_BUNDLE_EN.txt; WHICH_VERSION_TO_DOWNLOAD_RU.txt; WHICH_VERSION_TO_DOWNLOAD_EN.txt; README_RU.txt; README_EN.txt; SUPPORT_BUNDLE_RU.txt; SUPPORT_BUNDLE_EN.txt
+checks=--release-check; --runtime-preflight; --runtime-preflight --gpu; --result-health; --support-bundle; --diagnostics-help
+release_gate=RC_CHECKLIST_RU.txt; RC_CHECKLIST_EN.txt; RELEASE_GATE_RU.txt; RELEASE_GATE_EN.txt; RELEASE_FREEZE_RU.txt; RELEASE_FREEZE_EN.txt; DOCS_I18N_HYGIENE_RU.txt; DOCS_I18N_HYGIENE_EN.txt; DUAL_GPU_PACKAGING_RU.txt; DUAL_GPU_PACKAGING_EN.txt; PRODUCT_RENAME_RU.txt; PRODUCT_RENAME_EN.txt; PRE_RELEASE_POLISH_RU.txt; PRE_RELEASE_POLISH_EN.txt
+notes=v69.6 / Этап 055 is a release bundle / checksums / final public handoff polish on top of confirmed v69.5 / Этап 054; it keeps the confirmed CPU/GPU_FULL/GPU_LITE behavior baseline and does not change recognition models, clustering algorithms/thresholds, schema, CSV, project.json or pinned runtime behavior.
+
+gpu_lite=TunedImageSorter_GPU_LITE_portable_v69_6.zip; GPU_LITE_RU.txt; GPU_LITE_EN.txt; --gpu-lite-runtime-status; --gpu-lite-runtime-setup --yes; experimental_slim_gpu_package
+
+gpu_full=TunedImageSorter_GPU_FULL_portable_v69_6.zip; _internal\nvidia bundled; CUDAExecutionProvider; no first-run runtime download
+dual_gpu_packaging=DUAL_GPU_PACKAGING_RU.txt; DUAL_GPU_PACKAGING_EN.txt; dual_gpu_packaging_release_docs
+
+product_rename=product_rename_package_identity; Tuned Image Sorter; TunedImageSorter.exe; TunedImageSorter_CLI.exe; PRODUCT_RENAME_RU.txt; PRODUCT_RENAME_EN.txt; PRE_RELEASE_POLISH_RU.txt; PRE_RELEASE_POLISH_EN.txt
+
+pre_release_polish=PRE_RELEASE_POLISH_RU.txt; PRE_RELEASE_POLISH_EN.txt; first_public_polish; user_facing_quality_pass
+
+public_release_handoff=PROFILE_GUIDE_RU.txt; PROFILE_GUIDE_EN.txt; PRIVACY_LOCAL_PROCESSING_RU.txt; PRIVACY_LOCAL_PROCESSING_EN.txt; KNOWN_LIMITATIONS_RU.txt; KNOWN_LIMITATIONS_EN.txt; PUBLIC_RELEASE_NOTES_RU.txt; PUBLIC_RELEASE_NOTES_EN.txt; known_non_blocking_reports_auto_open_issue; release_bundle; SHA256SUMS.txt; RELEASE_BUNDLE_MANIFEST.json; WHICH_VERSION_TO_DOWNLOAD_RU.txt
+
+release_bundle=RELEASE_BUNDLE_RU.txt; RELEASE_BUNDLE_EN.txt; WHICH_VERSION_TO_DOWNLOAD_RU.txt; WHICH_VERSION_TO_DOWNLOAD_EN.txt; tools/windows_packaging/make_release_bundle.py; SHA256SUMS.txt; RELEASE_BUNDLE_MANIFEST.json; TunedImageSorter_v69_6_release

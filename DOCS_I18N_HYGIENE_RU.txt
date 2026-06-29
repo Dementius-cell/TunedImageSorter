@@ -1,0 +1,64 @@
+Tuned Image Sorter v69.6 / Этап 055 — first public polish / release identity pass
+
+Назначение этапа
+----------------
+v69.6 — first public polish / release identity pass поверх подтверждённой rebrand-базы v69.3.1 / Этап 052.
+
+Этот этап не меняет поведение программы. Он предназначен для финальной гигиены документации, перевода RU/EN и разработческих заметок перед передачей проекта другому человеку или разработчику.
+
+Что проверяется
+---------------
+PASS для этого этапа означает:
+
+1. Пользовательские friend-ready документы присутствуют в RU/EN.
+2. Документы для разработчика присутствуют в RU/EN.
+3. Устаревшие ссылки на ранние этапы удалены из developer notes и architecture notes.
+4. RU-документы не содержат крупных англоязычных блоков там, где должен быть русский текст.
+5. EN-документы используют Stage 055 вместо смешения с Этап 055, кроме технических цитат и совместимых идентификаторов.
+6. VERSION.txt, README, RELEASE_FREEZE, RELEASE_GATE и RC_CHECKLIST согласованы с v69.6.
+7. release-check содержит guard docs_i18n_hygiene_polish.
+
+Что не меняется
+---------------
+ML, распознавание лиц, clustering, ordinary Start, apply-names, pipeline stages, SQLite schema, project.json, CSV schemas, Review clusters backend, result-health backend, support-bundle backend, CPU/GPU packaging split, pinned GPU runtime и bundled CUDA runtime не менялись.
+
+Технические термины, которые не переводятся
+------------------------------------------
+Следующие строки оставлены как технические имена и часть стабильного контракта:
+
+- TunedImageSorter.exe
+- TunedImageSorter_CLI.exe
+- CUDAExecutionProvider
+- CPUExecutionProvider
+- onnxruntime
+- onnxruntime-gpu
+- package_identity_check
+- friend_ready_package
+- zip_integrity
+- support-bundle
+- result-health
+- project.json
+- problem_files.csv
+- review_decisions.csv
+
+Команды проверки
+----------------
+Source check:
+
+python tools/windows_packaging/verify_friend_ready_package.py --source-root .
+python tools/windows_packaging/smoke_test_packaging.py
+python tools/release_check.py
+
+Windows CPU/GPU build check:
+
+tools\windows_packaging\build_windows_gui.ps1 -Profile cpu -InstallRequirements
+tools\windows_packaging\build_windows_gui.ps1 -Profile gpu -InstallRequirements
+
+Ожидаемые ZIP:
+
+dist\windows\TunedImageSorter_CPU_portable_v69_6.zip
+dist\windows\TunedImageSorter_GPU_FULL_portable_v69_6.zip
+
+Критерий PASS
+-------------
+release-check OK, package_identity_check OK, friend-ready package verification OK, zip_integrity OK, CPU/GPU runtime split OK.

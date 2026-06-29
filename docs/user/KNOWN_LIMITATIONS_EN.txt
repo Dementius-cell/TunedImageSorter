@@ -1,0 +1,34 @@
+Tuned Image Sorter v69.6 / Stage 055 — known limitations
+
+File purpose:
+  Record known limitations before public sharing of the portable package, so expected behavior is not treated as a regression.
+
+Known limitations:
+
+1. Small photo sets
+   - Folders with 5–10 photos may not produce visually satisfying person clusters.
+   - Use a more representative set for quality checks.
+
+2. Automatic reports opening
+   - After a process started with the Start button, the reports folder may not open automatically.
+   - This is a known non-blocking UX issue in v69.6.
+   - Use the UI buttons for opening result/reports.
+
+3. GPU_FULL size
+   - A large _internal\nvidia folder is expected.
+   - This is the cost of a full portable CUDA build without first-run runtime download.
+
+4. GPU_LITE status
+   - GPU_LITE remains an experimental/supplementary profile.
+   - The main stable profiles are CPU and GPU_FULL.
+
+5. SmartScreen / antivirus
+   - The portable EXE may trigger a Windows SmartScreen warning.
+   - This is common for unsigned local builds.
+
+6. Review/apply-names
+   - review_decisions.csv is created by the review workflow and is not required after every ordinary run.
+   - apply-names does not rescan photos; it applies names.csv/assignments to the already created result.
+
+What did not change:
+  ML, clustering, ordinary Start, apply-names, SQLite/project.json/CSV schemas, result-health, support-bundle, CPU/GPU_FULL/GPU_LITE split and GPU Lite runtime setup logic are unchanged.

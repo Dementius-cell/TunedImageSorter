@@ -1,0 +1,59 @@
+Tuned Image Sorter v69.6 — support-bundle / bug-report
+
+Когда использовать
+------------------
+Создайте support-bundle, если приложение падает, диагностика GPU непонятна, сортировка остановилась, или нужно отправить разработчику состояние запуска без исходных фотографий.
+
+Как создать из GUI
+------------------
+1. Откройте TunedImageSorter.exe.
+2. Выберите input/output или откройте существующий result-проект.
+3. Нажмите кнопку "Создать bug-report".
+4. Отправьте созданный ZIP из папки output\bug_reports.
+
+Как создать из PowerShell
+-------------------------
+Откройте PowerShell в папке portable-пакета.
+
+Для существующего result/output:
+  .\TunedImageSorter_CLI.exe --support-bundle --output "D:\result 12-30 15.06.2026"
+
+Альтернативно:
+  .\TunedImageSorter_CLI.exe --mode support-bundle --output "D:\result 12-30 15.06.2026"
+
+Для проекта с project.json:
+  .\TunedImageSorter_CLI.exe --support-bundle --project "D:\result 12-30 15.06.2026"
+
+Что входит в ZIP
+----------------
+- system_info.json;
+- ui/ui_diagnostics.json;
+- pip_freeze.txt или frozen package snapshot;
+- face_sorter_mvp.log, если есть;
+- project.json / .face_sorter_run.json, если есть;
+- CSV-отчёты из output\reports;
+- автоматический health-check результата: output\reports\result_health_check.json и result_health_check.txt;
+- output\reports\diagnostics;
+- README/manifest support-bundle.
+
+Что не входит по умолчанию
+--------------------------
+- исходные фотографии;
+- face crops / превью лиц;
+- SQLite embeddings;
+- папки people, review, final, final_review.
+
+Важно по приватности
+--------------------
+ZIP может содержать имена файлов, пути к папкам, тексты ошибок, сведения о системе, версии библиотек, result-health summary и краткие отчёты. Перед отправкой можно открыть ZIP и проверить содержимое.
+
+Health-check результата
+-----------------------
+Для быстрой проверки существующей output/result папки без повторной сортировки:
+  .\TunedImageSorter_CLI.exe --result-health --output "D:\result 12-30 15.06.2026"
+
+Команда создаёт дополнительные файлы:
+  output\reports\result_health_check.json
+  output\reports\result_health_check.txt
+
+Эта проверка не запускает распознавание, не копирует фото и не меняет CSV-форматы отчётов.

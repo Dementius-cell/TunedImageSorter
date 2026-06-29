@@ -1,0 +1,16 @@
+{
+  "archive": "TunedImageSorter_v69_6_source_for_github_upload.zip",
+  "sha256": "6d8793b5244ba97fc1dbba38936eab98d7989eeed93d3f646392572121647d77",
+  "root_folder": "TunedImageSorter_v69_6_source",
+  "version": "v69.6",
+  "refactor_stage": "Этап 055",
+  "purpose": "GitHub source upload archive; release ZIPs should be attached to GitHub Releases, not committed to the repository.",
+  "file_count": 127,
+  "contains_runtime_build_outputs": false,
+  "contains_portable_zip_assets": false,
+  "added_helper_files": [
+    "README.md",
+    ".gitignore",
+    "GITHUB_SOURCE_UPLOAD_NOTES.txt"
+  ]
+}

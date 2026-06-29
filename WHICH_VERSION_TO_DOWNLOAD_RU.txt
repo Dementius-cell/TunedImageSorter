@@ -1,0 +1,46 @@
+Какую версию Tuned Image Sorter v69.6 скачать
+
+CPU — самый безопасный вариант
+------------------------------
+Скачивайте:
+  TunedImageSorter_CPU_portable_v69_6.zip
+
+Выбирайте CPU, если:
+- нет NVIDIA GPU;
+- нужна максимально простая portable-версия;
+- скорость не критична;
+- вы передаёте приложение человеку, у которого неизвестное железо.
+
+GPU_FULL — максимальная скорость на NVIDIA
+-----------------------------------------
+Скачивайте:
+  TunedImageSorter_GPU_FULL_portable_v69_6.zip
+
+Выбирайте GPU_FULL, если:
+- есть NVIDIA GPU и свежий NVIDIA driver;
+- нужен быстрый прогон больших папок;
+- размер ZIP/папки не критичен;
+- нужен полностью portable CUDA runtime без first-run download.
+
+GPU_LITE — экспериментальный облегчённый GPU-профиль
+----------------------------------------------------
+Скачивайте:
+  TunedImageSorter_GPU_LITE_portable_v69_6.zip
+
+Выбирайте GPU_LITE, если:
+- нужен меньший portable ZIP;
+- допустима first-run setup логика GPU runtime;
+- есть понимание, что это supplementary/experimental профиль;
+- при проблемах можно перейти на CPU или GPU_FULL.
+
+Общее правило
+-------------
+Если сомневаетесь — начните с CPU.
+Если CPU работает, но нужно быстрее и есть NVIDIA GPU — используйте GPU_FULL.
+GPU_LITE используйте как дополнительный вариант, а не как замену CPU/GPU_FULL.
+
+Known issue
+-----------
+После ordinary Start папка reports может не открыться автоматически. Это не означает ошибку обработки. Откройте output-папку вручную или используйте кнопки post-run actions в интерфейсе.
+
+known issue: reports folder may not auto-open after ordinary Start.

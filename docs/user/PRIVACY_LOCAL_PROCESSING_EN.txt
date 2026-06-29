@@ -1,0 +1,34 @@
+Tuned Image Sorter v69.6 / Stage 055 — privacy / local processing
+
+Summary:
+  The application is intended for local processing of photo folders and sorting the output by recognized faces.
+
+What to explain to the user:
+
+1. Source photos
+   - The app reads the selected input folder.
+   - Results are created in the selected output folder.
+   - For a safe first check, use a small copied test folder.
+
+2. Results
+   - Main results are stored in people/final/review/reports inside the output folder.
+   - Diagnostics and bug-report files may contain technical information about paths, runtime, errors and problem-file lists.
+   - The support-bundle should not intentionally include source photos.
+
+3. Cloud and network
+   - The ordinary Start pipeline does not require uploading photos to the cloud.
+   - GPU_FULL uses bundled CUDA runtime files.
+   - GPU_LITE may perform runtime setup into the local user folder; this concerns runtime dependencies, not photo upload.
+
+4. Sensitive photos
+   - Do not use the only copy of important photos as the test input folder.
+   - Review the output before sharing it with another person.
+   - Delete the output folder if the result is no longer needed.
+
+Known non-blocking UX issue:
+  After an ordinary Start run, the reports folder may not open automatically. Use the UI buttons for opening the result/reports. This does not change processing results.
+
+What did not change:
+  ML/recognition, clustering, ordinary Start pipeline, apply-names, schemas, result-health, support-bundle and GPU Lite runtime setup logic are unchanged.
+
+Verification token: known non-blocking UX issue

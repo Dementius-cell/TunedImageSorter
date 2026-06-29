@@ -1,0 +1,49 @@
+Tuned Image Sorter v69.6 — human-readable errors and next actions
+==============================================================
+
+v69.6 / Stage 055 adds human-readable errors polish: the "Status / errors" UI now shows the technical message plus a short "Meaning" and "Action" explanation.
+
+This is only a UX/diagnostics layer. ML, recognition, clustering, pipeline stages, SQLite schema, project.json, CSV schemas, ordinary Start and apply-names are unchanged.
+
+Common situations:
+
+1. Input is missing or not selected
+   Meaning: the app cannot see the source photo folder.
+   Action: check the path, external drive/OneDrive/network drive state and read permissions.
+
+2. Output is inside input
+   Meaning: the result folder is inside the source photo folder.
+   Action: choose a separate result/output folder outside input, for example D:\result.
+
+3. Access denied / permission denied
+   Meaning: Windows, OneDrive, a network drive, antivirus or another program blocked the file or folder.
+   Action: choose an accessible folder, close the file in other programs, or try a path closer to the drive root.
+
+4. GPU / CUDAExecutionProvider is unavailable
+   Meaning: Windows may see the GPU while ONNX Runtime still has no working CUDA provider.
+   Action: use the CPU build/CPU mode or check the GPU portable package and NVIDIA driver. A separate CUDA Toolkit is usually not needed for the portable GPU build.
+
+5. No faces were found
+   Meaning: this is not always a failure; photos may contain no people or faces may be small, blurry, occluded or heavily rotated.
+   Action: test with a small folder of 5-20 clear portrait photos.
+
+6. problem_files.csv is absent
+   Meaning: if no problematic files were detected, this file may not be created.
+   Action: this is normal for a successful ordinary run; use result-health if unsure.
+
+7. review_decisions.csv is absent
+   Meaning: the file is created after manual Review clusters / Save names.csv or apply-names workflow.
+   Action: if manual review was not used, the missing file is normal.
+
+8. apply-names cannot apply names
+   Meaning: apply-names uses existing assignments.csv and names.csv; it does not rescan photos.
+   Action: run ordinary sorting first, then Review clusters → Save names.csv → Apply names.
+
+If the problem is unclear:
+- open "Diagnostics / Support";
+- run result-health for the selected result/output folder;
+- create a support-bundle/bug-report;
+- share the ZIP with a short description of the action that caused the error.
+
+See also QUICK_START_EN.txt and TROUBLESHOOTING_EN.txt for friend-ready sharing with non-technical users.
+For the PASS/FAIL decision before sending the ZIP, use RC_CHECKLIST_EN.txt and RELEASE_GATE_EN.txt.

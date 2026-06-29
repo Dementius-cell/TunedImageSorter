@@ -1,0 +1,51 @@
+Tuned Image Sorter v69.6 — final release gate
+
+This file answers one question: can this portable build be handed to a normal user?
+
+PASS means:
+  1. CPU, GPU_FULL and GPU_LITE builds were produced from the same v69.6 / Этап 055 source base.
+  2. release-check reports OK.
+  3. friend-ready package verification reports OK.
+  4. portable_manifest.json records the correct profile: cpu, gpu or gpu-lite.
+  5. package_identity_check reports OK.
+  6. ZIP integrity reports OK.
+  7. CPU package does not contain CUDAExecutionProvider or GPU provider DLLs.
+  8. GPU package contains CUDAExecutionProvider and bundled CUDA/cuDNN/cuBLAS runtime.
+  9. QUICK_START, TROUBLESHOOTING, RC_CHECKLIST and RELEASE_GATE files are next to TunedImageSorter.exe.
+ 10. Ordinary Start remains the ordinary pipeline mode=all, not apply-names.
+
+FAIL means:
+  - Do not share the ZIP as stable.
+  - Save the Windows PowerShell build log.
+  - Create a support-bundle if the problem appears in GUI/result folder usage.
+  - Check TROUBLESHOOTING_EN.txt and ERRORS_EN.txt.
+
+Minimal gate commands:
+  tools\windows_packaging\build_windows_gui.ps1 -Profile cpu -InstallRequirements
+  tools\windows_packaging\build_windows_gui.ps1 -Profile gpu -InstallRequirements
+  tools\windows_packaging\build_windows_gui.ps1 -Profile gpu-lite -InstallRequirements
+
+Expected ZIP files:
+  dist\windows\TunedImageSorter_CPU_portable_v69_6.zip
+  dist\windows\TunedImageSorter_GPU_FULL_portable_v69_6.zip
+  dist\windows\TunedImageSorter_GPU_LITE_portable_v69_6.zip
+
+Final status can be fixed only after successful Windows CPU/GPU verification:
+  v69.6 / Этап 055 — confirmed stable release candidate gate base
+
+Boundaries:
+  ML/recognition unchanged
+  clustering unchanged
+  pipeline stages unchanged
+  SQLite schema unchanged
+  project.json unchanged
+  CSV report schemas unchanged
+  ordinary Start must run mode=all, not apply-names
+
+Additional freeze file: RELEASE_FREEZE_EN.txt
+
+Additional profile matrix: DUAL_GPU_PACKAGING_EN.txt
+
+
+Product rename:
+  Details: PRODUCT_RENAME_EN.txt

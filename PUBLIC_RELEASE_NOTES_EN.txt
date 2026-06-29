@@ -1,0 +1,28 @@
+Tuned Image Sorter v69.6 / Stage 055 — public release notes draft
+
+Purpose:
+  A short note for sharing the first public portable package with a non-technical user.
+
+Packages:
+  - TunedImageSorter_CPU_portable_v69_6.zip
+  - TunedImageSorter_GPU_FULL_portable_v69_6.zip
+  - TunedImageSorter_GPU_LITE_portable_v69_6.zip
+
+Recommendation:
+  - CPU: the simplest and most predictable option.
+  - GPU_FULL: faster on NVIDIA GPU, but the archive and folder are larger.
+  - GPU_LITE: smaller GPU package with first-run runtime setup; experimental/supplementary.
+
+Before the first large run:
+  1. Extract the ZIP into a normal folder.
+  2. Run TunedImageSorter.exe.
+  3. Test a small copied photo folder.
+  4. After the small test succeeds, run the large input folder.
+
+Known non-blocking issue:
+  reports may not open automatically after Start. Use the UI buttons for opening result or reports.
+
+v69.6 boundary:
+  This is documentation/release handoff polish. ML/pipeline/schema/runtime split are unchanged.
+
+Verification token: known non-blocking issue

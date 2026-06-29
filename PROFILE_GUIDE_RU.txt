@@ -1,0 +1,50 @@
+Tuned Image Sorter v69.6 / Этап 055 — какой профиль выбрать
+
+Назначение этапа:
+  Сделать выбор CPU / GPU_FULL / GPU_LITE понятным для обычного пользователя перед передачей portable-пакета.
+
+Краткий выбор:
+
+1. CPU
+   Используйте, если:
+   - нет NVIDIA GPU;
+   - нужен самый предсказуемый portable-пакет;
+   - скорость не критична;
+   - пакет передаётся пользователю без технической подготовки.
+
+   Ожидаемый архив:
+     TunedImageSorter_CPU_portable_v69_6.zip
+
+2. GPU_FULL
+   Используйте, если:
+   - есть NVIDIA GPU;
+   - важна максимальная автономность portable-пакета;
+   - допустим большой размер папки и ZIP;
+   - не хочется скачивать runtime при первом запуске.
+
+   Ожидаемый архив:
+     TunedImageSorter_GPU_FULL_portable_v69_6.zip
+
+   Особенность:
+     Папка _internal\nvidia большая. Это ожидаемо для full portable CUDA build.
+
+3. GPU_LITE
+   Используйте, если:
+   - есть NVIDIA GPU;
+   - нужен меньший ZIP;
+   - допустима first-run подготовка runtime в локальной папке пользователя;
+   - пользователь понимает, что профиль экспериментальный/дополнительный.
+
+   Ожидаемый архив:
+     TunedImageSorter_GPU_LITE_portable_v69_6.zip
+
+   Runtime cache:
+     %LOCALAPPDATA%\TunedImageSorter\gpu_lite_runtime\cuda12_ort126_v69_3_1
+
+Рекомендуемая передача пользователю:
+  - обычному пользователю без NVIDIA GPU: CPU;
+  - пользователю с NVIDIA GPU и без ограничений по размеру: GPU_FULL;
+  - продвинутому пользователю с NVIDIA GPU и требованием меньшего ZIP: GPU_LITE.
+
+Что не менялось в v69.6:
+  ML, распознавание лиц, clustering, ordinary Start pipeline, apply-names, SQLite/project.json/CSV schemas, result-health, support-bundle, CPU/GPU split и GPU Lite runtime setup logic не менялись.

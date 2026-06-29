@@ -1,0 +1,3 @@
+# CPU-oriented Windows build/runtime dependency set.
+-r requirements-windows-common.txt
+onnxruntime

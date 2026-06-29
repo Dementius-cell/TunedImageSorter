@@ -1,0 +1,68 @@
+Tuned Image Sorter v69.6 / Stage 055 — release bundle / checksums / final public handoff
+
+Purpose
+-------
+v69.6 does not change photo processing. This stage adds the final public handoff layer:
+- one release folder for all three portable ZIP files;
+- SHA256SUMS.txt for integrity checks;
+- RELEASE_BUNDLE_MANIFEST.json with profiles, ZIP names and SHA256 hashes;
+- a short guide explaining which version to download;
+- explicit known non-blocking issue note: the reports folder may not auto-open after an ordinary Start run.
+
+Official profiles
+-----------------
+- CPU: TunedImageSorter_CPU_portable_v69_6.zip
+- GPU_FULL: TunedImageSorter_GPU_FULL_portable_v69_6.zip
+- GPU_LITE: TunedImageSorter_GPU_LITE_portable_v69_6.zip
+
+How to create the public release bundle
+---------------------------------------
+1. Build all three portable ZIP files:
+
+   tools\windows_packaging\build_windows_gui.ps1 -Profile cpu -InstallRequirements
+   tools\windows_packaging\build_windows_gui.ps1 -Profile gpu-full -InstallRequirements
+   tools\windows_packaging\build_windows_gui.ps1 -Profile gpu-lite -InstallRequirements
+
+2. Create the bundle:
+
+   py tools\windows_packaging\make_release_bundle.py
+
+Expected output:
+
+   dist\windows\TunedImageSorter_v69_6_release\
+     TunedImageSorter_CPU_portable_v69_6.zip
+     TunedImageSorter_GPU_FULL_portable_v69_6.zip
+     TunedImageSorter_GPU_LITE_portable_v69_6.zip
+     SHA256SUMS.txt
+     RELEASE_BUNDLE_MANIFEST.json
+     WHICH_VERSION_TO_DOWNLOAD_RU.txt
+     WHICH_VERSION_TO_DOWNLOAD_EN.txt
+     PUBLIC_RELEASE_NOTES_RU.txt
+     PUBLIC_RELEASE_NOTES_EN.txt
+
+SHA256 check in PowerShell
+--------------------------
+
+   Get-FileHash .\TunedImageSorter_CPU_portable_v69_6.zip -Algorithm SHA256
+   Get-FileHash .\TunedImageSorter_GPU_FULL_portable_v69_6.zip -Algorithm SHA256
+   Get-FileHash .\TunedImageSorter_GPU_LITE_portable_v69_6.zip -Algorithm SHA256
+
+Compare Hash with SHA256SUMS.txt.
+
+Change boundaries
+-----------------
+Unchanged:
+- ML / face recognition;
+- clustering logic;
+- ordinary Start pipeline;
+- apply-names;
+- SQLite schema;
+- project.json schema;
+- CSV schemas;
+- result-health;
+- support-bundle;
+- CPU/GPU_FULL/GPU_LITE split;
+- GPU Lite runtime setup logic;
+- internal package name face_sorter_mvp.
+
+Release-check control phrase: runtime behavior and user photo processing are unchanged.

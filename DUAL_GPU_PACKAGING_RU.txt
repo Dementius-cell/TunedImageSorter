@@ -1,0 +1,64 @@
+Tuned Image Sorter v69.6 / Этап 055 — dual GPU packaging and release docs polish
+
+Назначение этапа
+----------------
+Этот этап закрепляет три официальных portable-профиля без изменения ML, распознавания лиц, clustering, pipeline, SQLite schema, project.json и CSV report schemas.
+
+Официальные ZIP-артефакты
+------------------------
+1. TunedImageSorter_CPU_portable_v69_6.zip
+   - CPU-only portable build.
+   - Не содержит CUDAExecutionProvider и не содержит onnxruntime-gpu.
+   - Рекомендуется для компьютеров без NVIDIA GPU или для максимально простого запуска.
+
+2. TunedImageSorter_GPU_FULL_portable_v69_6.zip
+   - Полная GPU portable-сборка.
+   - Содержит onnxruntime-gpu==1.26.0 и bundled CUDA 12 runtime внутри _internal\nvidia.
+   - Не требует скачивания CUDA runtime при первом запуске.
+   - Рекомендуется для передачи неподготовленному пользователю, если нужна GPU-скорость и размер ZIP приемлем.
+
+3. TunedImageSorter_GPU_LITE_portable_v69_6.zip
+   - Облегчённая GPU Lite-сборка.
+   - Не содержит bundled _internal\nvidia.
+   - Содержит ONNX Runtime CUDA provider DLL и при первом запуске может скачать pinned CUDA 12 runtime DLLs в локальную папку пользователя после согласия.
+   - При отсутствии NVIDIA GPU может работать через CPU/fallback, если пользователь запускает обработку без GPU.
+   - Остаётся supplementary/experimental относительно full GPU portable.
+
+Verification matrix
+-------------------
+Минимальный PASS для каждого профиля:
+- release-check OK
+- package_identity_check: OK
+- friend_ready_package: OK
+- zip_integrity: OK
+- portable_manifest.json содержит правильный profile
+
+CPU:
+- onnxruntime==1.27.0
+- CUDAExecutionProvider отсутствует
+- onnxruntime-gpu не установлен
+
+GPU_FULL:
+- onnxruntime-gpu==1.26.0
+- CUDAExecutionProvider виден
+- CUDA session smoke-test OK
+- _internal\nvidia присутствует
+- CUDA/cuDNN/cuBLAS runtime DLLs bundled
+
+GPU_LITE:
+- onnxruntime-gpu==1.26.0
+- onnxruntime_providers_cuda.dll присутствует
+- _internal\nvidia отсутствует
+- bundled NVIDIA runtime DLLs удалены
+- --gpu-lite-runtime-status работает
+- first-run runtime setup работает после согласия пользователя
+
+Regression guard
+----------------
+ordinary Start must run mode=all, not apply-names.
+
+Dual GPU packaging token: dual_gpu_packaging_release_docs
+
+
+Переименование продукта:
+  Подробности: PRODUCT_RENAME_RU.txt

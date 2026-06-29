@@ -1,0 +1,20 @@
+Tuned Image Sorter v69.6 source upload archive
+
+Purpose:
+- Upload this archive contents to the GitHub repository as source files.
+- Do not upload generated portable ZIP packages into the normal repository file tree.
+- Publish portable ZIP packages through GitHub Releases.
+
+Recommended repository name:
+- tuned-image-sorter
+
+Expected release assets:
+- TunedImageSorter_CPU_portable_v69_6.zip
+- TunedImageSorter_GPU_FULL_portable_v69_6.zip
+- TunedImageSorter_GPU_LITE_portable_v69_6.zip
+- SHA256SUMS.txt
+- RELEASE_BUNDLE_MANIFEST.json
+
+Runtime note:
+- This archive does not change the app runtime.
+- Internal Python package remains face_sorter_mvp.

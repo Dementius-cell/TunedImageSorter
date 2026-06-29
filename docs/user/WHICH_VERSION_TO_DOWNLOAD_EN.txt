@@ -1,0 +1,44 @@
+Which Tuned Image Sorter v69.6 version to download
+
+CPU — safest default
+--------------------
+Download:
+  TunedImageSorter_CPU_portable_v69_6.zip
+
+Choose CPU if:
+- there is no NVIDIA GPU;
+- you want the simplest portable version;
+- speed is not critical;
+- you are sharing the app with someone whose hardware is unknown.
+
+GPU_FULL — maximum speed on NVIDIA
+----------------------------------
+Download:
+  TunedImageSorter_GPU_FULL_portable_v69_6.zip
+
+Choose GPU_FULL if:
+- there is an NVIDIA GPU and a recent NVIDIA driver;
+- large photo folders should run faster;
+- ZIP/folder size is not a problem;
+- you want a fully portable CUDA runtime with no first-run runtime download.
+
+GPU_LITE — experimental lighter GPU profile
+-------------------------------------------
+Download:
+  TunedImageSorter_GPU_LITE_portable_v69_6.zip
+
+Choose GPU_LITE if:
+- you want a smaller portable ZIP;
+- first-run GPU runtime setup is acceptable;
+- you understand this is a supplementary/experimental profile;
+- CPU or GPU_FULL can be used as fallback if needed.
+
+General rule
+------------
+When unsure, start with CPU.
+If CPU works but you need more speed and have an NVIDIA GPU, use GPU_FULL.
+Use GPU_LITE as an additional option, not as a replacement for CPU/GPU_FULL.
+
+Known issue
+-----------
+After an ordinary Start run, the reports folder may not auto-open. This does not mean processing failed. Open the output folder manually or use the post-run action buttons in the UI.

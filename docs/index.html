@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tuned Image Sorter</title>
+  <meta name="description" content="Tuned Image Sorter is a local Windows photo sorting tool for grouping large image folders by detected faces.">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="./" aria-label="Tuned Image Sorter home">
+      <img src="assets/app_icon.png" alt="" width="40" height="40">
+      <span>Tuned Image Sorter</span>
+    </a>
+    <nav aria-label="Primary">
+      <a href="#downloads">Downloads</a>
+      <a href="#docs">Docs</a>
+      <a href="#developers">Developers</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <div class="intro-copy">
+        <p class="eyebrow">Windows portable app - v69.6</p>
+        <h1>Local photo sorting by detected face clusters</h1>
+        <p>
+          Tuned Image Sorter helps organize large folders of photos into face-based groups while keeping processing on the user's computer.
+        </p>
+        <p lang="ru">
+          Приложение сортирует большие папки фотографий по распознанным лицам локально, без обязательного облачного сервиса.
+        </p>
+        <div class="actions">
+          <a class="button primary" href="#downloads">Choose a build</a>
+          <a class="button secondary" href="README.md">Documentation index</a>
+        </div>
+      </div>
+      <div class="release-panel" aria-label="Current release summary">
+        <img src="assets/app_icon.png" alt="" width="96" height="96">
+        <dl>
+          <div>
+            <dt>Version</dt>
+            <dd>v69.6</dd>
+          </div>
+          <div>
+            <dt>Stage</dt>
+            <dd>055</dd>
+          </div>
+          <div>
+            <dt>Profiles</dt>
+            <dd>CPU, GPU_FULL, GPU_LITE</dd>
+          </div>
+          <div>
+            <dt>Privacy</dt>
+            <dd>Local-first processing</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section id="downloads" class="section">
+      <div class="section-heading">
+        <p class="eyebrow">Downloads</p>
+        <h2>Pick the right portable ZIP</h2>
+      </div>
+      <div class="profile-grid">
+        <article class="profile-card">
+          <h3>CPU</h3>
+          <p>Most compatible Windows build. Start here if you are not sure which version to download.</p>
+          <code>TunedImageSorter_CPU_portable_v69_6.zip</code>
+        </article>
+        <article class="profile-card">
+          <h3>GPU_FULL</h3>
+          <p>For NVIDIA GPU PCs. Larger package because it bundles CUDA runtime files.</p>
+          <code>TunedImageSorter_GPU_FULL_portable_v69_6.zip</code>
+        </article>
+        <article class="profile-card">
+          <h3>GPU_LITE</h3>
+          <p>Experimental smaller GPU profile with runtime setup and fallback behavior.</p>
+          <code>TunedImageSorter_GPU_LITE_portable_v69_6.zip</code>
+        </article>
+      </div>
+      <p class="note">Release ZIPs and `SHA256SUMS.txt` should be attached to GitHub Releases.</p>
+    </section>
+
+    <section id="docs" class="section split">
+      <div>
+        <p class="eyebrow">For Users</p>
+        <h2>Start with the short guides</h2>
+        <ul class="link-list">
+          <li><a href="user/START_HERE_RU.txt">START_HERE_RU.txt</a></li>
+          <li><a href="user/START_HERE_EN.txt">START_HERE_EN.txt</a></li>
+          <li><a href="user/QUICK_START_RU.txt">QUICK_START_RU.txt</a></li>
+          <li><a href="user/QUICK_START_EN.txt">QUICK_START_EN.txt</a></li>
+          <li><a href="user/WHICH_VERSION_TO_DOWNLOAD_RU.txt">WHICH_VERSION_TO_DOWNLOAD_RU.txt</a></li>
+          <li><a href="user/WHICH_VERSION_TO_DOWNLOAD_EN.txt">WHICH_VERSION_TO_DOWNLOAD_EN.txt</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="eyebrow">Safety</p>
+        <h2>Privacy and support</h2>
+        <ul class="link-list">
+          <li><a href="user/PRIVACY_LOCAL_PROCESSING_RU.txt">PRIVACY_LOCAL_PROCESSING_RU.txt</a></li>
+          <li><a href="user/PRIVACY_LOCAL_PROCESSING_EN.txt">PRIVACY_LOCAL_PROCESSING_EN.txt</a></li>
+          <li><a href="user/TROUBLESHOOTING_RU.txt">TROUBLESHOOTING_RU.txt</a></li>
+          <li><a href="user/TROUBLESHOOTING_EN.txt">TROUBLESHOOTING_EN.txt</a></li>
+          <li><a href="user/KNOWN_LIMITATIONS_RU.txt">KNOWN_LIMITATIONS_RU.txt</a></li>
+          <li><a href="user/KNOWN_LIMITATIONS_EN.txt">KNOWN_LIMITATIONS_EN.txt</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="developers" class="section">
+      <div class="section-heading">
+        <p class="eyebrow">Developers</p>
+        <h2>Source checks and packaging</h2>
+      </div>
+      <div class="command-band">
+        <code>py tools\release_check.py --no-self-test</code>
+        <code>py -m compileall face_sorter_mvp tools</code>
+      </div>
+      <div class="dev-links">
+        <a href="DEVELOPER_NOTES_EN.md">Developer notes EN</a>
+        <a href="DEVELOPER_NOTES_RU.md">Developer notes RU</a>
+        <a href="developer/README_WINDOWS_PACKAGING_EN.md">Windows packaging EN</a>
+        <a href="developer/README_WINDOWS_PACKAGING_RU.md">Windows packaging RU</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>Tuned Image Sorter v69.6</span>
+    <span>Local-first Windows photo sorting</span>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,46 @@
+Tuned Image Sorter v69.6 — first run for a non-technical user
+
+What to run:
+  TunedImageSorter.exe
+
+What a normal user should not run directly:
+  TunedImageSorter_CLI.exe — diagnostics only, usually when the developer asks for it.
+
+Safe order:
+  1. Extract the ZIP into a separate folder, for example D:\TunedImageSorter_CPU or D:\TunedImageSorter_GPU_FULL.
+  2. Run TunedImageSorter.exe from the extracted folder.
+  3. Choose input: the folder with source photos.
+  4. Choose output: a new result folder outside input.
+  5. Run Environment check.
+  6. Use Quick test and first verify 20–50 photos.
+  7. Use Start for the large archive only after the small test succeeds.
+  8. After completion, open Run result, people, review, reports and diagnostics.
+
+CPU or GPU:
+  The CPU package is more compatible and does not require CUDAExecutionProvider.
+  The GPU package is useful for large folders, but requires an NVIDIA GPU and a current NVIDIA driver.
+  CUDA Toolkit, cuDNN installer, Python and pip are not required on the user's computer.
+
+Avoid:
+  Do not place output inside input.
+  Do not run processing directly from the ZIP archive.
+  Do not remove _internal or bundled CUDA runtime from the GPU portable package.
+  Do not use apply-names instead of normal Start for the initial sorting run.
+
+If something goes wrong:
+  1. Open diagnostics.
+  2. Create a support-bundle/bug-report.
+  3. If needed, run:
+     TunedImageSorter_CLI.exe --diagnostics-help
+     TunedImageSorter_CLI.exe --runtime-preflight
+     TunedImageSorter_CLI.exe --runtime-preflight --gpu
+     TunedImageSorter_CLI.exe --result-health --output <result_dir>
+     TunedImageSorter_CLI.exe --support-bundle --output <result_dir>
+
+v69.6 / Stage 055 adds beginner UX: a first-run action map in the GUI and a separate FIRST_RUN file next to TunedImageSorter.exe.
+ML, clustering, pipeline stages, SQLite schema, project.json and CSV schemas are unchanged.
+
+If a problem appears in "Status / errors", open ERRORS_EN.txt: it lists common situations and actions.
+
+See also QUICK_START_EN.txt and TROUBLESHOOTING_EN.txt for friend-ready sharing with non-technical users.
+Before sharing the build with another person, use RC_CHECKLIST_EN.txt and RELEASE_GATE_EN.txt.

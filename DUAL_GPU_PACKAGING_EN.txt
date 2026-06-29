@@ -1,0 +1,64 @@
+Tuned Image Sorter v69.6 / Stage 055 — dual GPU packaging and release docs polish
+
+Purpose
+-------
+This stage makes the three official portable profiles explicit without changing ML, face recognition, clustering, pipeline, SQLite schema, project.json or CSV report schemas.
+
+Official ZIP artifacts
+----------------------
+1. TunedImageSorter_CPU_portable_v69_6.zip
+   - CPU-only portable build.
+   - Does not contain CUDAExecutionProvider and does not contain onnxruntime-gpu.
+   - Recommended for machines without an NVIDIA GPU or for the simplest startup path.
+
+2. TunedImageSorter_GPU_FULL_portable_v69_6.zip
+   - Full GPU portable build.
+   - Contains onnxruntime-gpu==1.26.0 and bundled CUDA 12 runtime under _internal\nvidia.
+   - Does not need to download CUDA runtime on first launch.
+   - Recommended for non-technical users when GPU speed is needed and ZIP size is acceptable.
+
+3. TunedImageSorter_GPU_LITE_portable_v69_6.zip
+   - Lightweight GPU Lite build.
+   - Does not bundle _internal\nvidia.
+   - Keeps the ONNX Runtime CUDA provider DLL and can download pinned CUDA 12 runtime DLLs into the local user folder on first launch after consent.
+   - Can run through CPU/fallback on systems without an NVIDIA GPU when the user starts processing without GPU.
+   - Remains supplementary/experimental compared with full GPU portable.
+
+Verification matrix
+-------------------
+Minimum PASS for every profile:
+- release-check OK
+- package_identity_check: OK
+- friend_ready_package: OK
+- zip_integrity: OK
+- portable_manifest.json records the correct profile
+
+CPU:
+- onnxruntime==1.27.0
+- CUDAExecutionProvider is absent
+- onnxruntime-gpu is not installed
+
+GPU_FULL:
+- onnxruntime-gpu==1.26.0
+- CUDAExecutionProvider is visible
+- CUDA session smoke-test OK
+- _internal\nvidia is present
+- CUDA/cuDNN/cuBLAS runtime DLLs are bundled
+
+GPU_LITE:
+- onnxruntime-gpu==1.26.0
+- onnxruntime_providers_cuda.dll is present
+- _internal\nvidia is absent
+- bundled NVIDIA runtime DLLs are stripped
+- --gpu-lite-runtime-status works
+- first-run runtime setup works after user consent
+
+Regression guard
+----------------
+ordinary Start must run mode=all, not apply-names.
+
+Dual GPU packaging token: dual_gpu_packaging_release_docs
+
+
+Product rename:
+  Details: PRODUCT_RENAME_EN.txt

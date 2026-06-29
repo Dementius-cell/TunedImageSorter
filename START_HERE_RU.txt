@@ -1,0 +1,76 @@
+Tuned Image Sorter v69.6 — с чего начать
+=====================================
+
+1. Распакуйте ZIP в обычную папку, например:
+   D:\TunedImageSorter_CPU
+   D:\TunedImageSorter_GPU_FULL
+
+2. Для самого короткого пути откройте:
+   QUICK_START_RU.txt
+
+3. Для первого запуска обычным пользователем откройте:
+   FIRST_RUN_RU.txt
+
+4. Запуск приложения:
+   TunedImageSorter.exe
+
+5. Если Windows SmartScreen предупреждает о неизвестном приложении:
+   Подробнее / More info -> Выполнить в любом случае / Run anyway.
+   Это обычная ситуация для unsigned portable exe.
+
+6. В GUI выберите:
+   input  = папка с исходными фото;
+   output = отдельная папка результата вне input.
+
+Важно: output нельзя помещать внутрь input, иначе результат может повторно попасть в обработку.
+
+7. Перед большим запуском:
+   - нажмите «Проверка окружения»;
+   - нажмите «Быстрый тест»;
+   - сначала проверьте 20–50 фото.
+
+8. Диагностика запускается через console launcher:
+   TunedImageSorter_CLI.exe --diagnostics-help
+   TunedImageSorter_CLI.exe --runtime-preflight
+   TunedImageSorter_CLI.exe --runtime-preflight --gpu
+   TunedImageSorter_CLI.exe --release-check
+   TunedImageSorter_CLI.exe --result-health --output <result_dir>
+   TunedImageSorter_CLI.exe --support-bundle --output <result_dir>
+
+9. Если возникла проблема:
+   ERRORS_RU.txt — что значит ошибка и что сделать.
+   TROUBLESHOOTING_RU.txt — типовые проблемы portable package.
+
+10. Если нужно отправить диагностику разработчику:
+   TunedImageSorter_CLI.exe --support-bundle --output <result_dir>
+
+11. Перед передачей сборки другому человеку:
+   RC_CHECKLIST_RU.txt — финальный checklist.
+   RELEASE_GATE_RU.txt — решение PASS/FAIL перед отправкой ZIP.
+
+v69.6 / Этап 055 добавляет RC_CHECKLIST_RU/EN и RELEASE_GATE_RU/EN рядом с TunedImageSorter.exe.
+ML, clustering, pipeline stages, reports formats и output/result structure не менялись.
+
+Финальная stable/freeze проверка перед передачей ZIP: RELEASE_FREEZE_RU.txt
+
+GPU Lite experimental package:
+  См. GPU_LITE_RU.txt
+  TunedImageSorter_GPU_LITE_portable_v69_6.zip
+  --gpu-lite-runtime-status
+  --gpu-lite-runtime-setup --yes
+
+
+Переименование продукта:
+  Подробности: PRODUCT_RENAME_RU.txt
+
+Дополнительные файлы v69.6 для публичной передачи:
+  PROFILE_GUIDE_RU.txt — какой профиль выбрать: CPU / GPU_FULL / GPU_LITE.
+  PRIVACY_LOCAL_PROCESSING_RU.txt — privacy и локальная обработка.
+  KNOWN_LIMITATIONS_RU.txt — известные ограничения, включая reports auto-open.
+  PUBLIC_RELEASE_NOTES_RU.txt — короткая памятка для передачи сборки.
+
+
+Финальный release bundle v69.6:
+  RELEASE_BUNDLE_RU.txt — как собрать итоговую папку TunedImageSorter_v69_6_release.
+  WHICH_VERSION_TO_DOWNLOAD_RU.txt — какую версию скачать: CPU / GPU_FULL / GPU_LITE.
+  tools\windows_packaging\make_release_bundle.py — копирует три ZIP в release-папку и создаёт SHA256SUMS.txt + RELEASE_BUNDLE_MANIFEST.json.

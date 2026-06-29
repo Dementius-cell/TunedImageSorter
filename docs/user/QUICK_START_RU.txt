@@ -1,0 +1,50 @@
+Tuned Image Sorter v69.6 — короткая инструкция на 1 страницу
+==========================================================
+
+Для обычного пользователя открывать нужно только:
+  TunedImageSorter.exe
+
+Минимальный порядок:
+  1. Распакуйте ZIP в обычную папку, не запускайте из архива.
+  2. Запустите TunedImageSorter.exe.
+  3. Выберите input — папку с исходными фотографиями.
+  4. Выберите output — отдельную папку результата вне input.
+  5. Нажмите «Проверка окружения».
+  6. Нажмите «Быстрый тест» на 20–50 фото.
+  7. Если быстрый тест нормальный, нажмите «Старт» для всей папки.
+  8. После завершения смотрите результат в people/review/final, отчёты в reports, диагностику в diagnostics.
+
+CPU или GPU:
+  CPU portable — самый совместимый вариант.
+  GPU portable — быстрее на больших папках, нужен NVIDIA GPU и актуальный NVIDIA driver.
+  CUDA Toolkit, cuDNN installer, Python и pip на компьютере пользователя не нужны.
+
+Чего не делать:
+  - Не кладите output внутрь input.
+  - Не удаляйте _internal.
+  - Не удаляйте папку _internal\nvidia в GPU package.
+  - Не запускайте apply-names вместо обычного «Старт» для первичной сортировки.
+
+Если Windows SmartScreen ругается:
+  Подробнее / More info -> Выполнить в любом случае / Run anyway.
+  Это ожидаемо для unsigned portable exe.
+
+Если что-то пошло не так:
+  1. Откройте ERRORS_RU.txt.
+  2. Откройте TROUBLESHOOTING_RU.txt.
+  3. В GUI откройте «Статус / ошибки» и «Диагностика / Support».
+  4. Для проверки результата используйте:
+     TunedImageSorter_CLI.exe --result-health --output <result_dir>
+  5. Для отправки диагностики используйте:
+     TunedImageSorter_CLI.exe --support-bundle --output <result_dir>
+
+Полная краткая карта файлов:
+  START_HERE_RU.txt       — с чего начать.
+  QUICK_START_RU.txt      — эта короткая инструкция.
+  FIRST_RUN_RU.txt        — подробный первый запуск.
+  ERRORS_RU.txt           — понятные ошибки.
+  TROUBLESHOOTING_RU.txt  — что делать при типовых проблемах.
+  README_RU.txt           — полный README пакета.
+
+v69.6 / Этап 055 добавляет friend-ready quick start и troubleshooting docs без изменения ML/pipeline/schema/CSV/project.json/CPU-GPU split.
+Перед передачей сборки другому человеку откройте RC_CHECKLIST_RU.txt и RELEASE_GATE_RU.txt.

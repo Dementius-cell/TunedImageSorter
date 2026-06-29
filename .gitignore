@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Build artifacts
+build/
+dist/
+*.spec.tmp
+
+# Windows packaging outputs
+TunedImageSorter_CPU/
+TunedImageSorter_GPU_FULL/
+TunedImageSorter_GPU_LITE/
+TunedImageSorter_*_portable_*.zip
+FaceSorterMVP_*_portable_*.zip
+
+# Runtime diagnostics / generated checks
+runtime_preflight_*_build_check.json
+runtime_preflight_*_build_check.raw.txt
+package_identity_check.json
+package_identity_check.txt
+gpu_lite_runtime_status_build_check.json
+
+# User results / test data
+result*/
+results/
+bug_reports/
+people/
+faces/
+final/
+final_review/
+
+# Local files
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.rar
+*.7z

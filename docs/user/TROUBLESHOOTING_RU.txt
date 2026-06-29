@@ -1,0 +1,84 @@
+Tuned Image Sorter v69.6 — troubleshooting для portable package
+=============================================================
+
+Эта памятка нужна, если пользователь не знает, что делать после ошибки.
+
+1. Приложение не запускается
+   Что проверить:
+   - ZIP полностью распакован.
+   - Запускается TunedImageSorter.exe, а не файл внутри архива.
+   - Папка _internal находится рядом с TunedImageSorter.exe.
+   - Windows SmartScreen: Подробнее / More info -> Выполнить в любом случае / Run anyway.
+
+2. CPU или GPU package
+   CPU package:
+   - самый совместимый вариант;
+   - CUDAExecutionProvider не нужен;
+   - onnxruntime-gpu не нужен.
+
+   GPU package:
+   - нужен NVIDIA GPU и актуальный NVIDIA driver;
+   - CUDA Toolkit и cuDNN installer отдельно не нужны;
+   - _internal\nvidia может быть большой — это нормально.
+
+3. Проверка окружения
+   CPU:
+     TunedImageSorter_CLI.exe --runtime-preflight
+   GPU:
+     TunedImageSorter_CLI.exe --runtime-preflight --gpu
+
+   Если в GPU не виден CUDAExecutionProvider, используйте CPU package или проверьте NVIDIA driver.
+
+4. Ошибки input/output
+   Правило:
+     input  = папка с исходными фото;
+     output = отдельная папка результата вне input.
+
+   Нельзя:
+     D:\Photos\result, если input = D:\Photos
+
+   Лучше:
+     input  = D:\Photos
+     output = D:\result
+
+5. Лица не найдены
+   Это может быть нормальным результатом, если лица маленькие, размытые, закрытые или фото без людей.
+   Проверьте папку из 5–20 понятных портретных фото.
+
+6. Часть файлов пропущена
+   Откройте:
+     reports\problem_files.csv
+   Это список проблемных/нечитаемых/подозрительных файлов. Обработка остальных фото должна продолжаться.
+
+7. Нужно проверить готовый result
+   Используйте:
+     TunedImageSorter_CLI.exe --result-health --output <result_dir>
+
+   Отчёты появятся здесь:
+     <result_dir>\reports\result_health_check.json
+     <result_dir>\reports\result_health_check.txt
+
+8. Нужно отправить диагностику разработчику
+   Используйте:
+     TunedImageSorter_CLI.exe --support-bundle --output <result_dir>
+
+   В ZIP не нужно добавлять исходные фотографии. Support-bundle собирает diagnostics, reports, package identity и result_health_check.
+
+9. Где смотреть подсказки в GUI
+   - Запуск / настройки — основной путь запуска.
+   - Ход выполнения — прогресс.
+   - Статус / ошибки — «Что это значит» и «Что сделать».
+   - Итог запуска — результат.
+   - Диагностика / Support — result-health и support-bundle.
+
+10. Что не изменялось в v69.6
+   ML/recognition unchanged.
+   clustering unchanged.
+   pipeline stages unchanged.
+   SQLite schema unchanged.
+   project.json unchanged.
+   CSV report schemas unchanged.
+   ordinary Start must run mode=all, not apply-names.
+
+v69.6 / Этап 055 — friend-ready README / quick start / troubleshooting polish.
+Если проблема не решена, не отправляйте ZIP как stable; пройдите RC_CHECKLIST_RU.txt и RELEASE_GATE_RU.txt.

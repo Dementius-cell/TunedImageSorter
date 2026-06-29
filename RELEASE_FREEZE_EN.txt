@@ -1,0 +1,53 @@
+Tuned Image Sorter v69.6 — stable release packaging freeze
+
+Purpose: lock the final stable portable release layout.
+This is not a new user workflow and not a new pipeline. It is a freeze layer on top of the confirmed v68.7.1 / Stage 048 CPU/GPU base.
+
+Status after successful Windows CPU/GPU verification:
+  v69.6 / Stage 055 — confirmed stable release packaging freeze base
+
+Main artifacts:
+  TunedImageSorter_CPU_portable_v69_6.zip
+  TunedImageSorter_GPU_FULL_portable_v69_6.zip
+
+Freeze guarantees:
+  release_freeze_final_package
+  release-check: OK
+  package_identity_check: OK
+  friend_ready_package: OK
+  zip_integrity: OK
+  portable_manifest.json: OK
+  ordinary Start must run mode=all, not apply-names
+
+CPU package freeze:
+  onnxruntime==1.27.0
+  onnxruntime-gpu is not installed
+  CUDAExecutionProvider is absent
+  GPU provider DLLs are not bundled
+
+GPU package freeze:
+  onnxruntime-gpu==1.26.0
+  CUDAExecutionProvider is visible
+  CUDA session smoke-test: OK
+  _internal\nvidia is included in the full GPU portable ZIP
+  CUDA/cuDNN/cuBLAS/NVRTC/cuFFT/cuRAND/nvJitLink runtime is bundled
+  First launch must not download NVIDIA runtime files from the internet
+
+Freeze boundaries:
+  ML/recognition unchanged
+  clustering unchanged
+  pipeline stages unchanged
+  SQLite schema unchanged
+  project.json unchanged
+  CSV report schemas unchanged
+  Review clusters/apply-names backend unchanged
+  result-health/support-bundle backend unchanged
+  CPU/GPU packaging split unchanged
+  full GPU portable remains self-contained
+
+Rollback base:
+  v68.7.1 / Stage 048 — confirmed stable release candidate gate base
+
+Sharing rule:
+  Share only ZIP files that pass RELEASE_GATE_EN.txt and this RELEASE_FREEZE_EN.txt.
+  If package_identity_check or zip_integrity is not OK, do not share the ZIP as stable.

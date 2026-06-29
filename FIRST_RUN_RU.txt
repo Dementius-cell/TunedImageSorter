@@ -1,0 +1,46 @@
+Tuned Image Sorter v69.6 — первый запуск для обычного пользователя
+
+Что запускать:
+  TunedImageSorter.exe
+
+Что не запускать обычному пользователю:
+  TunedImageSorter_CLI.exe — только для диагностики по просьбе разработчика.
+
+Безопасный порядок:
+  1. Распакуйте ZIP в отдельную папку, например D:\TunedImageSorter_CPU или D:\TunedImageSorter_GPU_FULL.
+  2. Запустите TunedImageSorter.exe из распакованной папки.
+  3. Выберите input: папка с исходными фотографиями.
+  4. Выберите output: новая result-папка вне input.
+  5. Нажмите «Проверка окружения».
+  6. Нажмите «Быстрый тест» и сначала проверьте 20–50 фото.
+  7. Нажмите «Старт» для большого архива только после успешного малого теста.
+  8. После завершения откройте «Итог запуска», people, review, reports и diagnostics.
+
+CPU или GPU:
+  CPU-сборка совместимее и не требует CUDAExecutionProvider.
+  GPU-сборка полезна для больших папок, но требует NVIDIA GPU и актуальный NVIDIA driver.
+  CUDA Toolkit, cuDNN installer, Python и pip на компьютере пользователя не нужны.
+
+Чего избегать:
+  Не кладите output внутрь input.
+  Не запускайте обработку прямо из ZIP-архива.
+  Не удаляйте папку _internal и bundled CUDA runtime из GPU portable.
+  Не используйте apply-names вместо обычного «Старт» для первичной сортировки.
+
+Если возникла проблема:
+  1. Откройте diagnostics.
+  2. Создайте support-bundle/bug-report.
+  3. При необходимости запустите:
+     TunedImageSorter_CLI.exe --diagnostics-help
+     TunedImageSorter_CLI.exe --runtime-preflight
+     TunedImageSorter_CLI.exe --runtime-preflight --gpu
+     TunedImageSorter_CLI.exe --result-health --output <result_dir>
+     TunedImageSorter_CLI.exe --support-bundle --output <result_dir>
+
+v69.6 / Этап 055 добавляет beginner UX: маршрут первого запуска в GUI и отдельный FIRST_RUN файл рядом с TunedImageSorter.exe.
+ML, clustering, pipeline stages, SQLite schema, project.json и CSV schemas не менялись.
+
+Если в «Статус / ошибки» появилась проблема, откройте ERRORS_RU.txt: там перечислены частые ситуации и действия.
+
+См. также QUICK_START_RU.txt и TROUBLESHOOTING_RU.txt для friend-ready передачи обычному пользователю.
+Перед передачей сборки другому человеку используйте RC_CHECKLIST_RU.txt и RELEASE_GATE_RU.txt.

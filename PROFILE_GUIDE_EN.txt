@@ -1,0 +1,50 @@
+Tuned Image Sorter v69.6 / Stage 055 — choosing the right profile
+
+Stage purpose:
+  Make CPU / GPU_FULL / GPU_LITE selection clear before sharing a portable package with a non-technical user.
+
+Quick choice:
+
+1. CPU
+   Use it when:
+   - there is no NVIDIA GPU;
+   - you want the most predictable portable package;
+   - speed is not critical;
+   - the package is being shared with a non-technical user.
+
+   Expected archive:
+     TunedImageSorter_CPU_portable_v69_6.zip
+
+2. GPU_FULL
+   Use it when:
+   - an NVIDIA GPU is available;
+   - maximum portable self-containment matters;
+   - a large folder and ZIP size are acceptable;
+   - first-run runtime downloads should be avoided.
+
+   Expected archive:
+     TunedImageSorter_GPU_FULL_portable_v69_6.zip
+
+   Note:
+     The _internal\nvidia folder is large. This is expected for the full portable CUDA build.
+
+3. GPU_LITE
+   Use it when:
+   - an NVIDIA GPU is available;
+   - a smaller ZIP is preferred;
+   - first-run runtime setup in the local user folder is acceptable;
+   - the user understands this is an experimental/supplementary profile.
+
+   Expected archive:
+     TunedImageSorter_GPU_LITE_portable_v69_6.zip
+
+   Runtime cache:
+     %LOCALAPPDATA%\TunedImageSorter\gpu_lite_runtime\cuda12_ort126_v69_3_1
+
+Recommended sharing choice:
+  - non-technical user without NVIDIA GPU: CPU;
+  - user with NVIDIA GPU and no strict package-size limit: GPU_FULL;
+  - advanced user with NVIDIA GPU and a smaller ZIP requirement: GPU_LITE.
+
+What did not change in v69.6:
+  ML, face recognition, clustering, ordinary Start pipeline, apply-names, SQLite/project.json/CSV schemas, result-health, support-bundle, CPU/GPU split and GPU Lite runtime setup logic are unchanged.

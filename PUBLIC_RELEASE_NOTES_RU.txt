@@ -1,0 +1,28 @@
+Tuned Image Sorter v69.6 / Этап 055 — public release notes draft
+
+Назначение:
+  Короткая памятка для передачи первой публичной portable-сборки обычному пользователю.
+
+Пакеты:
+  - TunedImageSorter_CPU_portable_v69_6.zip
+  - TunedImageSorter_GPU_FULL_portable_v69_6.zip
+  - TunedImageSorter_GPU_LITE_portable_v69_6.zip
+
+Рекомендация:
+  - CPU: самый простой и предсказуемый вариант.
+  - GPU_FULL: быстрее на NVIDIA GPU, но архив и папка больше.
+  - GPU_LITE: меньший GPU-пакет с first-run runtime setup; experimental/supplementary.
+
+Перед первым большим запуском:
+  1. Распакуйте ZIP в обычную папку.
+  2. Запустите TunedImageSorter.exe.
+  3. Проверьте маленькую тестовую папку.
+  4. После успешного теста запускайте большую input-папку.
+
+Known non-blocking issue:
+  reports может не открыться автоматически после Старт. Используйте кнопки UI для открытия результата или отчётов.
+
+Границы изменения v69.6:
+  Это documentation/release handoff polish. ML/pipeline/schema/runtime split не менялись.
+
+Verification token: known non-blocking issue

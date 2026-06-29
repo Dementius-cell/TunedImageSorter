@@ -1,0 +1,17 @@
+# Tuned Image Sorter v69.6 / Этап 055 — common Windows runtime/build dependencies.
+# Install in a clean virtual environment from the project root:
+#   py -m pip install -r tools\windows_packaging\requirements-windows-cpu.txt
+# or, for an NVIDIA GPU/CUDA 12 environment:
+#   py -m pip install -r tools\windows_packaging\requirements-windows-gpu-cu12.txt
+
+PySide6
+pyinstaller
+numpy
+Pillow
+opencv-python
+scikit-learn
+hdbscan
+insightface
+tqdm
+pillow-heif
+psutil

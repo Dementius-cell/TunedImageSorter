@@ -1,0 +1,68 @@
+Tuned Image Sorter v69.6 / Этап 055 — release bundle / checksums / final public handoff
+
+Назначение этапа
+----------------
+v69.6 не меняет обработку фотографий. Этап добавляет финальный слой передачи релиза:
+- единая release-папка для трёх portable ZIP;
+- SHA256SUMS.txt для проверки целостности;
+- RELEASE_BUNDLE_MANIFEST.json с профилями, именами ZIP и SHA256;
+- краткая памятка, какую версию скачивать;
+- явная фиксация known non-blocking issue: reports может не открываться автоматически после обычного запуска кнопкой «Старт».
+
+Официальные профили
+-------------------
+- CPU: TunedImageSorter_CPU_portable_v69_6.zip
+- GPU_FULL: TunedImageSorter_GPU_FULL_portable_v69_6.zip
+- GPU_LITE: TunedImageSorter_GPU_LITE_portable_v69_6.zip
+
+Как собрать внешний release bundle
+----------------------------------
+1. Соберите три portable ZIP обычными командами:
+
+   tools\windows_packaging\build_windows_gui.ps1 -Profile cpu -InstallRequirements
+   tools\windows_packaging\build_windows_gui.ps1 -Profile gpu-full -InstallRequirements
+   tools\windows_packaging\build_windows_gui.ps1 -Profile gpu-lite -InstallRequirements
+
+2. Создайте bundle:
+
+   py tools\windows_packaging\make_release_bundle.py
+
+Ожидаемый результат:
+
+   dist\windows\TunedImageSorter_v69_6_release\
+     TunedImageSorter_CPU_portable_v69_6.zip
+     TunedImageSorter_GPU_FULL_portable_v69_6.zip
+     TunedImageSorter_GPU_LITE_portable_v69_6.zip
+     SHA256SUMS.txt
+     RELEASE_BUNDLE_MANIFEST.json
+     WHICH_VERSION_TO_DOWNLOAD_RU.txt
+     WHICH_VERSION_TO_DOWNLOAD_EN.txt
+     PUBLIC_RELEASE_NOTES_RU.txt
+     PUBLIC_RELEASE_NOTES_EN.txt
+
+Проверка SHA256 в PowerShell
+----------------------------
+
+   Get-FileHash .\TunedImageSorter_CPU_portable_v69_6.zip -Algorithm SHA256
+   Get-FileHash .\TunedImageSorter_GPU_FULL_portable_v69_6.zip -Algorithm SHA256
+   Get-FileHash .\TunedImageSorter_GPU_LITE_portable_v69_6.zip -Algorithm SHA256
+
+Сравните Hash со строками в SHA256SUMS.txt.
+
+Границы изменений
+-----------------
+Не менялись:
+- ML / распознавание лиц;
+- clustering logic;
+- ordinary Start pipeline;
+- apply-names;
+- SQLite schema;
+- project.json schema;
+- CSV schemas;
+- result-health;
+- support-bundle;
+- CPU/GPU_FULL/GPU_LITE split;
+- GPU Lite runtime setup logic;
+- внутренний package face_sorter_mvp.
+
+Контрольная фраза для release-check: runtime и пользовательская обработка фото не менялись.

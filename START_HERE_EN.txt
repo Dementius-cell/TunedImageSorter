@@ -1,0 +1,72 @@
+Tuned Image Sorter v69.6 — where to begin
+======================================
+
+1. Extract the ZIP to a normal folder, for example:
+   D:\TunedImageSorter_CPU
+   D:\TunedImageSorter_GPU_FULL
+
+2. For the shortest path, open:
+   QUICK_START_EN.txt
+
+3. For a non-technical first run, open:
+   FIRST_RUN_EN.txt
+
+4. Run the app:
+   TunedImageSorter.exe
+
+5. If Windows SmartScreen warns about an unknown app:
+   More info -> Run anyway.
+   This is normal for an unsigned portable exe.
+
+6. In the GUI choose:
+   input  = source photo folder;
+   output = separate result folder outside input.
+
+Important: do not place output inside input, or generated files may be scanned again later.
+
+7. Before a large run:
+   - run Environment check;
+   - use Quick test;
+   - first verify 20–50 photos.
+
+8. Diagnostics use the console launcher:
+   TunedImageSorter_CLI.exe --diagnostics-help
+   TunedImageSorter_CLI.exe --runtime-preflight
+   TunedImageSorter_CLI.exe --runtime-preflight --gpu
+   TunedImageSorter_CLI.exe --release-check
+   TunedImageSorter_CLI.exe --result-health --output <result_dir>
+   TunedImageSorter_CLI.exe --support-bundle --output <result_dir>
+
+9. If something goes wrong:
+   ERRORS_EN.txt — what the error means and what to do.
+   TROUBLESHOOTING_EN.txt — common portable package problems.
+
+10. To send diagnostics to the developer:
+   TunedImageSorter_CLI.exe --support-bundle --output <result_dir>
+
+v69.6 / Stage 055 adds RC_CHECKLIST_RU/EN and RELEASE_GATE_RU/EN next to TunedImageSorter.exe.
+ML, clustering, pipeline stages, report formats and output/result structure are unchanged.
+
+Final stable/freeze check before sharing ZIP: RELEASE_FREEZE_EN.txt
+
+GPU Lite experimental package:
+  See GPU_LITE_EN.txt
+  TunedImageSorter_GPU_LITE_portable_v69_6.zip
+  --gpu-lite-runtime-status
+  --gpu-lite-runtime-setup --yes
+
+
+Product rename:
+  Details: PRODUCT_RENAME_EN.txt
+
+Additional v69.6 files for public handoff:
+  PROFILE_GUIDE_EN.txt — choosing CPU / GPU_FULL / GPU_LITE.
+  PRIVACY_LOCAL_PROCESSING_EN.txt — privacy and local processing.
+  KNOWN_LIMITATIONS_EN.txt — known limitations, including reports auto-open.
+  PUBLIC_RELEASE_NOTES_EN.txt — short note for sharing the package.
+
+
+Final v69.6 release bundle:
+  RELEASE_BUNDLE_EN.txt — how to create the final TunedImageSorter_v69_6_release folder.
+  WHICH_VERSION_TO_DOWNLOAD_EN.txt — which version to download: CPU / GPU_FULL / GPU_LITE.
+  tools\windows_packaging\make_release_bundle.py — copies the three ZIP files into the release folder and writes SHA256SUMS.txt + RELEASE_BUNDLE_MANIFEST.json.

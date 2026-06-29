@@ -1,0 +1,62 @@
+Tuned Image Sorter v69.6 / Stage 055 — pre-release polish checklist
+
+Purpose
+-------
+v69.6 is a safe user-facing polish pass on top of the confirmed v69.3.1 / Stage 052 base.
+
+What this stage checks
+----------------------
+1. User-facing product name: Tuned Image Sorter.
+2. Launcher names: TunedImageSorter.exe and TunedImageSorter_CLI.exe.
+3. Portable folders:
+   - TunedImageSorter_CPU
+   - TunedImageSorter_GPU_FULL
+   - TunedImageSorter_GPU_LITE
+4. Portable ZIP names:
+   - TunedImageSorter_CPU_portable_v69_6.zip
+   - TunedImageSorter_GPU_FULL_portable_v69_6.zip
+   - TunedImageSorter_GPU_LITE_portable_v69_6.zip
+5. VERSION.txt, portable_manifest.json, package_identity_check.json and package_identity_check.txt are aligned with v69.6 / Stage 055.
+6. Friend-ready docs are placed next to TunedImageSorter.exe.
+7. README / QUICK_START / TROUBLESHOOTING / RELEASE_GATE / RELEASE_FREEZE / RC_CHECKLIST stay aligned between RU and EN versions.
+
+What did not change
+-------------------
+- ML / face recognition.
+- Clustering logic.
+- Ordinary Start pipeline.
+- apply-names.
+- SQLite schema.
+- project.json schema.
+- CSV schemas.
+- result-health.
+- support-bundle.
+- CPU / GPU_FULL / GPU_LITE split.
+- GPU Lite runtime setup logic.
+- Internal Python package name: face_sorter_mvp.
+
+GPU Lite note
+-------------
+The GPU Lite runtime cache remains:
+%LOCALAPPDATA%\TunedImageSorter\gpu_lite_runtime\cuda12_ort126_v69_3_1
+
+This is expected: the runtime stack did not change, so the existing local cache can be reused.
+
+Release gate
+------------
+Check all three profiles before sharing a build:
+
+CPU:
+  TunedImageSorter_CLI.exe --release-check
+  TunedImageSorter_CLI.exe --runtime-preflight
+
+GPU_FULL:
+  TunedImageSorter_CLI.exe --release-check
+  TunedImageSorter_CLI.exe --runtime-preflight --gpu
+
+GPU_LITE:
+  TunedImageSorter_CLI.exe --release-check
+  TunedImageSorter_CLI.exe --gpu-lite-runtime-status
+  TunedImageSorter_CLI.exe --runtime-preflight --gpu
+
+Ordinary Start must run mode=all, not apply-names.

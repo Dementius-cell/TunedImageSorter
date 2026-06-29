@@ -1,0 +1,59 @@
+Tuned Image Sorter v69.6 — support-bundle / bug-report
+
+When to use it
+--------------
+Create a support-bundle if the app crashes, GPU diagnostics are unclear, sorting stops, or you need to send the run state to the developer without source photos.
+
+How to create it from the GUI
+-----------------------------
+1. Open TunedImageSorter.exe.
+2. Select input/output or open an existing result project.
+3. Click "Create bug-report".
+4. Send the generated ZIP from output\bug_reports.
+
+How to create it from PowerShell
+--------------------------------
+Open PowerShell in the portable package folder.
+
+For an existing result/output folder:
+  .\TunedImageSorter_CLI.exe --support-bundle --output "D:\result 12-30 15.06.2026"
+
+Alternative form:
+  .\TunedImageSorter_CLI.exe --mode support-bundle --output "D:\result 12-30 15.06.2026"
+
+For a project containing project.json:
+  .\TunedImageSorter_CLI.exe --support-bundle --project "D:\result 12-30 15.06.2026"
+
+What the ZIP contains
+---------------------
+- system_info.json;
+- ui/ui_diagnostics.json;
+- pip_freeze.txt or a frozen package snapshot;
+- face_sorter_mvp.log, if present;
+- project.json / .face_sorter_run.json, if present;
+- CSV reports from output\reports;
+- automatic result health-check: output\reports\result_health_check.json and result_health_check.txt;
+- output\reports\diagnostics;
+- support-bundle README/manifest files.
+
+What is not included by default
+-------------------------------
+- source photos;
+- face crops / face previews;
+- SQLite embeddings;
+- people, review, final, final_review folders.
+
+Privacy note
+------------
+The ZIP may contain filenames, folder paths, error text, system information, package versions, result-health summary and compact reports. You can open the ZIP before sending and inspect its contents.
+
+Result health-check
+-------------------
+To quickly inspect an existing output/result folder without re-running sorting:
+  .\TunedImageSorter_CLI.exe --result-health --output "D:\result 12-30 15.06.2026"
+
+The command creates additive files:
+  output\reports\result_health_check.json
+  output\reports\result_health_check.txt
+
+This check does not run recognition, does not copy photos and does not change report CSV formats.
